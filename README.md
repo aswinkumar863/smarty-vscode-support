@@ -1,5 +1,10 @@
 # Smarty Template for Visual Studio Code
 
+[![Latest Release](https://vsmarketplacebadge.apphb.com/version-short/aswinkumar863.smarty-template-support.svg)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support)
+[![Installs](https://vsmarketplacebadge.apphb.com/installs/aswinkumar863.smarty-template-support.svg)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support)
+[![Rating](https://vsmarketplacebadge.apphb.com/rating-short/aswinkumar863.smarty-template-support.svg)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support#review-details)
+![GitHub closed issues](https://img.shields.io/github/issues-closed/aswinkumar863/smarty-vscode-support?color=blue)
+
 Provides [Smarty Template](https://www.smarty.net/) support to Visual Studio Code.
 
 ## Features
@@ -43,7 +48,7 @@ Provides [Smarty Template](https://www.smarty.net/) support to Visual Studio Cod
 
 ![Netbeans Theme](images/netbeans-theme-preview.png)
 
-Copy the following into your user `settings.json`
+Copy and Paste the following into your user `settings.json`
 
 ```
 "editor.tokenColorCustomizations": {
