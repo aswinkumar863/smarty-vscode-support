@@ -1,3 +1,6 @@
+## 1.0.1 (March 29, 2020)
+* formatter dependency fixes and improvements
+
 ## 1.0.0 (March 28, 2020)
 
 Features:

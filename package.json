@@ -2,7 +2,7 @@
 	"name": "smarty-template-support",
 	"displayName": "Smarty Template Support",
 	"description": "Smarty template support with formatting, folding, snippets, syntax highlighting and more",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"preview": true,
 	"publisher": "aswinkumar863",
 	"icon": "images/logo.png",
@@ -114,7 +114,10 @@
 		"glob": "^7.1.6",
 		"mocha": "^7.0.1",
 		"typescript": "^3.7.5",
-		"vscode-test": "^1.3.0",
-		"js-beautify": "^1.6.4"
+		"vscode-test": "^1.3.0"
+	},
+	"dependencies": {
+		"@types/js-beautify": "^1.8.2",
+		"js-beautify": "^1.10.3"
 	}
 }

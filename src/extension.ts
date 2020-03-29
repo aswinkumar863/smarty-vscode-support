@@ -35,7 +35,7 @@ export function activate(context: vscode.ExtensionContext) {
 		});
 
 		// validate highlightColor setting
-		const hexRegex = /^#([A-Fa-f0-9]{8})$/ig
+		const hexRegex = /^#([A-Fa-f0-9]{8})$/i
 		if (!hexRegex.test(CONFIG.highlightColor.light)) {
 			CONFIG.highlightColor.light = "#FFFA0040";
 			vscode.window.showWarningMessage('Invalid value for smarty.highlightColor.light setting (Default applied)');
@@ -194,7 +194,8 @@ class BeautifyHTMLFormatter implements DocumentFormattingEditProvider, DocumentR
 		const options = {
 			indent_size: CONFIG.tabSize,
 			indent_with_tabs: !CONFIG.insertSpaces,
-			templating: ["handlebars"]
+			indent_handlebars: true,
+			indent_inner_html: true
 		};
 		return options;
 	}
