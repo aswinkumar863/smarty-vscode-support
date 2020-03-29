@@ -1,0 +1,120 @@
+{
+	"name": "smarty-template-support",
+	"displayName": "Smarty Template Support",
+	"description": "Smarty template support with formatting, folding, snippets, syntax highlighting and more",
+	"version": "1.0.0",
+	"preview": true,
+	"publisher": "aswinkumar863",
+	"icon": "images/logo.png",
+	"galleryBanner": {
+		"color": "#BEAE3A",
+		"theme": "dark"
+	},
+	"engines": {
+		"vscode": "^1.42.0"
+	},
+	"categories": [
+		"Programming Languages",
+		"Language Packs",
+		"Formatters",
+		"Snippets",
+		"Other"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/aswinkumar863/smarty-vscode-support.git"
+	},
+	"activationEvents": [
+		"onLanguage:smarty"
+	],
+	"main": "./out/extension.js",
+	"keywords": [
+		"smarty",
+		"smarty 3",
+		"smarty template",
+		"tpl",
+		"php"
+	],
+	"contributes": {
+		"languages": [
+			{
+				"id": "smarty",
+				"aliases": [
+					"Smarty",
+					"smarty"
+				],
+				"extensions": [
+					".tpl"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "smarty",
+				"scopeName": "text.html.smarty",
+				"path": "./syntaxes/smarty.tmLanguage.json",
+				"embeddedLanguages": {
+					"meta.embedded.block.html": "html",
+					"source.js": "javascript",
+					"source.css": "css"
+				}
+			}
+		],
+		"snippets": [
+			{
+				"language": "smarty",
+				"path": "./snippets/snippets.json"
+			}
+		],
+		"configurationDefaults": {
+			"emmet.syntaxProfiles": {
+				"tpl": "html"
+			},
+			"emmet.includeLanguages": {
+				"smarty": "html"
+			}
+		},
+		"configuration": {
+			"type": "object",
+			"title": "Smarty Template Support",
+			"properties": {
+				"smarty.highlight": {
+					"type": "boolean",
+					"description": "Enable/disable highlight decoration of Smarty tags",
+					"default": true
+				},
+				"smarty.highlightColor": {
+					"type": "object",
+					"description": "Highlight decoration color based on dark/light theme kind",
+					"default": {
+						"dark": "#FFFFFF25",
+						"light": "#FFFA0040"
+					}
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^7.0.1",
+		"@types/node": "^12.11.7",
+		"@types/vscode": "^1.42.0",
+		"eslint": "^6.8.0",
+		"@typescript-eslint/parser": "^2.18.0",
+		"@typescript-eslint/eslint-plugin": "^2.18.0",
+		"glob": "^7.1.6",
+		"mocha": "^7.0.1",
+		"typescript": "^3.7.5",
+		"vscode-test": "^1.3.0",
+		"js-beautify": "^1.6.4"
+	}
+}
