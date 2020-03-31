@@ -2,7 +2,7 @@
 	"name": "smarty-template-support",
 	"displayName": "Smarty Template Support",
 	"description": "Smarty template support with formatting, folding, snippets, syntax highlighting and more",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"preview": true,
 	"publisher": "aswinkumar863",
 	"icon": "images/logo.png",
@@ -55,7 +55,7 @@
 				"scopeName": "text.html.smarty",
 				"path": "./syntaxes/smarty.tmLanguage.json",
 				"embeddedLanguages": {
-					"meta.embedded.block.html": "html",
+					"source.html": "html",
 					"source.js": "javascript",
 					"source.css": "css"
 				}

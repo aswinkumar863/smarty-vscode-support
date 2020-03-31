@@ -7,8 +7,7 @@
     "text.html.smarty - (meta.embedded | meta.tag | comment.block), L:text.html.smarty meta.tag": {
       "patterns": [
         { "include": "#comments" },
-        { "include": "#blocks" },
-        { "include": "#literals" }
+        { "include": "#blocks" }
       ]
     }
   },
@@ -16,6 +15,27 @@
   "repository": {
     "blocks": {
       "patterns": [
+        {
+          "begin": "({)(literal)(})",
+          "beginCaptures": {
+            "0": { "name": "source.smarty" },
+            "1": { "name": "punctuation.section.embedded.begin.smarty" },
+            "2": { "name": "support.function.built-in.smarty" },
+            "3": { "name": "punctuation.section.embedded.end.smarty" }
+          },
+          "contentName": "source.html",
+          "end": "\\s+(?!(\\{%?)\\*)\\s+({)(\\/literal)(})",
+          "endCaptures": {
+            "0": { "name": "source.smarty" },
+            "2": { "name": "punctuation.section.embedded.begin.smarty" },
+            "3": { "name": "support.function.built-in.smarty" },
+            "4": { "name": "punctuation.section.embedded.end.smarty" }
+          },
+          "name": "meta.embedded.literal.tag.smarty",
+          "patterns": [
+            { "include": "text.html.basic" }
+          ]
+        },
         {
           "begin": "(\\{%?)",
           "beginCaptures": [
@@ -32,8 +52,7 @@
           "patterns": [
             { "include": "#strings" },
             { "include": "#variables" },
-            { "include": "#lang" },
-            { "include": "#literals" }
+            { "include": "#lang" }
           ]
         }
       ]
@@ -146,15 +165,6 @@
           },
           "match": "(->)([a-zA-Z_][a-zA-Z0-9_]*)(\\().*?(\\))",
           "name": "variable.other.smarty"
-        }
-      ]
-    },
-    "literals": {
-      "patterns": [
-        {
-          "begin": "{literal",
-          "end": "{\\/literal",
-          "include": "text.html.basic"
         }
       ]
     }

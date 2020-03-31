@@ -83,17 +83,26 @@ export function activate(context: vscode.ExtensionContext) {
 		if (!activeTextEditor || activeTextEditor.document.languageId !== "smarty") {
 			return;
 		}
-		const regEx = /{%?[^} \n].+?%?}/gi;
-		const text = activeTextEditor.document.getText();
-		const largeNumbers: vscode.DecorationOptions[] = [];
+		const smartyRegExp = /{(?:[^}{\n]+|{(?:[^}{]+|{[^}{]*})*})*}/g;
+		const docText = activeTextEditor.document.getText();
+		const smartyTags: vscode.DecorationOptions[] = [];
+
 		let match;
-		while (match = regEx.exec(text)) {
+		while (match = smartyRegExp.exec(docText)) {
 			const startPos = activeTextEditor.document.positionAt(match.index);
 			const endPos = activeTextEditor.document.positionAt(match.index + match[0].length);
-			const decoration = { range: new vscode.Range(startPos, endPos) };
-			largeNumbers.push(decoration);
+			const range = new vscode.Range(startPos, endPos);
+			const rangeTxt = activeTextEditor.document.getText(range);
+			const decoration = {range};
+
+			// checking tag inside literal
+			const prevRange = smartyTags[smartyTags.length - 1];
+			const prevRangeTxt = prevRange ? activeTextEditor.document.getText(prevRange.range) : '';
+			if(!prevRangeTxt.includes('{literal}') || rangeTxt.includes('{/literal}')) {
+				smartyTags.push(decoration);
+			}
 		}
-		activeTextEditor.setDecorations(smartyDecoration, largeNumbers);
+		activeTextEditor.setDecorations(smartyDecoration, smartyTags);
 	}
 
 	function triggerUpdateDecorations() {
