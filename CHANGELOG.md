@@ -1,4 +1,4 @@
-## 1.0.1 (March 31, 2020)
+## 1.0.2 (March 31, 2020)
 * html comments inside literal block
 * highlighting decoration disabled inside literal block
 
