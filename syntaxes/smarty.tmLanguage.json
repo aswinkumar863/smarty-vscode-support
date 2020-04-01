@@ -85,8 +85,11 @@
           "name": "keyword.control.smarty"
         },
         {
-          "captures": [{ "name": "variable.parameter.smarty" }],
-          "match": "\\b([a-zA-Z]+)=",
+          "captures": {
+            "0": { "name": "variable.parameter.smarty" },
+            "3": { "name": "keyword.operator.assignment.smarty" }
+          },
+          "match": "\\b([a-zA-Z]+)(\\s+)?(=)",
           "name": "meta.attribute.smarty"
         },
         {
@@ -143,9 +146,10 @@
         {
           "captures": {
             "1": { "name": "punctuation.definition.variable.smarty" },
-            "2": { "name": "variable.other.smarty" }
+            "2": { "name": "variable.other.smarty" },
+            "4": { "name": "keyword.operator.assignment.smarty" }
           },
-          "match": "(\\$)([a-zA-Z_][a-zA-Z0-9_]*)\\b",
+          "match": "(\\$)([a-zA-Z_.][a-zA-Z0-9_.]*)\\b(\\s+)?(=)?",
           "name": "variable.other.smarty"
         },
         {

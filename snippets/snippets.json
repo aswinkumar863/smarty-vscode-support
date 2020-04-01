@@ -1,151 +1,151 @@
 {
 	"append": {
 		"prefix": ["append", "{append}"],
-		"body": "${SMARTY_LDELIM:{}append var=\"${1:name}\" value=\"${2:value}\" index=\"${3:last}\"${SMARTY_RDELIM:\\}}$0",
+		"body": "{append var=\"${1:name}\" value=\"${2:value}\" index=\"${3:last}\"}$0",
 		"description": "{append} is used for creating or appending template variable arrays during the execution of a template.",
 		"reference": "https://www.smarty.net/docs/en/language.function.append.tpl"
 	},
 	"assign": {
 		"prefix": ["assign", "{assign}"],
-		"body": "${SMARTY_LDELIM:{}assign var=\"${1:name}\" value=${2:value}${4: scope=${3:scope}}${SMARTY_RDELIM:\\}}$0",
+		"body": "{assign var=\"${1:name}\" value=${2:value}${4: scope=${3:scope}}}$0",
 		"description": "{assign} is used for assigning template variables during the execution of a template.",
 		"reference": "https://www.smarty.net/docs/en/language.function.assign.tpl"
 	},
 	"block": {
 		"prefix": ["block", "{block}"],
-		"body": "${SMARTY_LDELIM:{}block name=${1:name}${SMARTY_RDELIM:\\}}\n\t$0\n${SMARTY_LDELIM:{}/block${SMARTY_RDELIM:\\}}",
+		"body": "{block name=${1:name}}\n\t$0\n{/block}",
 		"description": "{block} is used to define a named area of template source for template inheritance.",
 		"reference": "https://www.smarty.net/docs/en/language.function.block.tpl"
 	},
 	"/block": {
 		"prefix": "/block",
-		"body": "${SMARTY_LDELIM:{}/block${SMARTY_RDELIM:\\}}$0",
+		"body": "{/block}$0",
 		"description": "",
 		"reference": ""
 	},
 	"break": {
 		"prefix": ["break", "{break}"],
-		"body": "${SMARTY_LDELIM:{}break${SMARTY_RDELIM:\\}}$0",
+		"body": "{break}$0",
 		"description": "{break} aborts the iteration of the array.",
 		"reference": "https://www.smarty.net/docs/en/language.function.foreach.tpl#foreach.construct.break"
 	},
 	"capture": {
 		"prefix": ["capture", "{capture}"],
-		"body": "${SMARTY_LDELIM:{}capture ${2:name=\"${1:name}\" }${4:assign=\"${3:variable}\" }${6:append=\"${5:array_variable}\"}${SMARTY_RDELIM:\\}}\n\t$0\n${SMARTY_LDELIM:{}/capture${SMARTY_RDELIM:\\}}",
+		"body": "{capture ${2:name=\"${1:name}\" }${4:assign=\"${3:variable}\" }${6:append=\"${5:array_variable}\"}}\n\t$0\n{/capture}",
 		"description": "{capture} is used to collect the output of the template between the tags into a variable instead of displaying it. Any content between {capture name='foo'} and {/capture} is collected into the variable specified in the name attribute.",
 		"reference": "https://www.smarty.net/docs/en/language.function.capture.tpl"
 	},
 	"/capture": {
 		"prefix": ["/capture", "{/capture}"],
-		"body": "${SMARTY_LDELIM:{}/capture${SMARTY_RDELIM:\\}}$0",
+		"body": "{/capture}$0",
 		"description": "",
 		"reference": ""
 	},
 	"case": {
 		"prefix": ["case", "{case}"],
-		"body": "${SMARTY_LDELIM:{}case ${1:case_name}${SMARTY_RDELIM:\\}}\n\t$0\n\t${2:${SMARTY_LDELIM:{}break${SMARTY_RDELIM:\\}}}",
+		"body": "{case ${1:case_name}}\n\t$0\n\t${2:{break}}",
 		"description": "",
 		"reference": ""
 	},
 	"comment": {
 		"prefix": ["comment", "{comment}"],
-		"body": "${SMARTY_LDELIM:{}* ${1:comment} *${SMARTY_RDELIM:\\}}$0",
+		"body": "{* ${1:comment} *}$0",
 		"description": "",
 		"reference": ""
 	},
 	"debug": {
 		"prefix": ["debug", "{debug}"],
-		"body": "${SMARTY_LDELIM:{}\\$${1:variable}|@debug_print_var${SMARTY_RDELIM:\\}}$0",
+		"body": "{\\$${1:variable}|@debug_print_var}$0",
 		"description": "{debug} dumps the debug console to the page.",
 		"reference": "https://www.smarty.net/docs/en/language.function.debug.tpl"
 	},
 	"else": {
 		"prefix": ["else", "{else}"],
-		"body": "${SMARTY_LDELIM:{}else${SMARTY_RDELIM:\\}}\n\t$0",
+		"body": "{else}\n\t$0",
 		"description": "",
 		"reference": ""
 	},
 	"elseif": {
 		"prefix": ["elseif", "{elseif}"],
-		"body": "${SMARTY_LDELIM:{}elseif ${1:condition}${SMARTY_RDELIM:\\}}\n\t$0",
+		"body": "{elseif ${1:condition}}\n\t$0",
 		"description": "",
 		"reference": ""
 	},
 	"extends": {
 		"prefix": ["extends", "{extends}"],
-		"body": "${SMARTY_LDELIM:{}extends file=\"${1:file}\"${SMARTY_RDELIM:\\}}$0",
+		"body": "{extends file=\"${1:file}\"}$0",
 		"description": "{extends} tags are used in child templates in template inheritance for extending parent templates.",
 		"reference": "https://www.smarty.net/docs/en/language.function.extends.tpl"
 	},
 	"foreach": {
 		"prefix": ["foreach", "{foreach}"],
-		"body": "${SMARTY_LDELIM:{}foreach from=${1:collection} item=${2:item}${4: key=${3:key}}${6: name=${5:name}}${SMARTY_RDELIM:\\}}\n\t$0\n${SMARTY_LDELIM:{}/foreach${SMARTY_RDELIM:\\}}",
+		"body": "{foreach from=${1:collection} item=${2:item}${4: key=${3:key}}${6: name=${5:name}}}\n\t$0\n{/foreach}",
 		"description": "{foreach} is used for looping over arrays of data.",
 		"reference": "https://www.smarty.net/docs/en/language.function.foreach.tpl"
 	},
 	"/foreach": {
 		"prefix": ["/foreach", "{/foreach}"],
-		"body": "${SMARTY_LDELIM:{}/foreach${SMARTY_RDELIM:\\}}$0",
+		"body": "{/foreach}$0",
 		"description": "",
 		"reference": ""
 	},
 	"function": {
 		"prefix": ["function", "{function}"],
-		"body": "${SMARTY_LDELIM:{}function name=\"${1:name}\" ${2:variables}${SMARTY_RDELIM:\\}}\n\t$0\n${SMARTY_LDELIM:{}/function${SMARTY_RDELIM:\\}}",
+		"body": "{function name=\"${1:name}\" ${2:variables}}\n\t$0\n{/function}",
 		"description": "{function} is used to create functions within a template and call them just like a plugin function. Instead of writing a plugin that generates presentational content, keeping it in the template is often a more manageable choice. It also simplifies data traversal, such as deeply nested menus.",
 		"reference": "https://www.smarty.net/docs/en/language.function.function.tpl"
 	},
 	"/function": {
 		"prefix": ["/function", "{/function}"],
-		"body": "${SMARTY_LDELIM:{}/function${SMARTY_RDELIM:\\}}$0",
+		"body": "{/function}$0",
 		"description": "",
 		"reference": ""
 	},
 	"if": {
 		"prefix": ["if", "{if}"],
-		"body": "${SMARTY_LDELIM:{}if ${1:condition}${SMARTY_RDELIM:\\}}\n\t$0\n${SMARTY_LDELIM:{}/if${SMARTY_RDELIM:\\}}",
+		"body": "{if ${1:condition}}\n\t$0\n{/if}",
 		"description": "",
 		"reference": ""
 	},
 	"/if": {
 		"prefix": ["/if", "{/if}"],
-		"body": "${SMARTY_LDELIM:{}/if${SMARTY_RDELIM:\\}}$0",
+		"body": "{/if}$0",
 		"description": "",
 		"reference": ""
 	},
 	"ifelse": {
 		"prefix": ["ifelse", "{ifelse}"],
-		"body": "${SMARTY_LDELIM:{}if ${1:condition}${SMARTY_RDELIM:\\}}\n\t$2\n${SMARTY_LDELIM:{}else${SMARTY_RDELIM:\\}}\n\t$3\n${SMARTY_LDELIM:{}/if${SMARTY_RDELIM:\\}}",
+		"body": "{if ${1:condition}}\n\t$2\n{else}\n\t$3\n{/if}",
 		"description": "",
 		"reference": ""
 	},
 	"include": {
 		"prefix": ["include", "{include}"],
-		"body": "${SMARTY_LDELIM:{}include file=\"${1:file}\"${3: assign=${2:name}}${6: ${4:var1}=${5:value}}${SMARTY_RDELIM:\\}}$0",
+		"body": "{include file=\"${1:file}\"${3: assign=${2:name}}${6: ${4:var1}=${5:value}}}$0",
 		"description": "{include} tags are used for including other templates in the current template.",
 		"reference": "https://www.smarty.net/docs/en/language.function.include.tpl"
 	},
 	"literal": {
 		"prefix": ["literal", "{literal}"],
-		"body": "${SMARTY_LDELIM:{}literal${SMARTY_RDELIM:\\}}\n\t$0\n${SMARTY_LDELIM:{}/literal${SMARTY_RDELIM:\\}}",
+		"body": "{literal}\n\t$0\n{/literal}",
 		"description": "{literal} tags allow a block of data to be taken literally. This is typically used around Javascript or stylesheet blocks where {curly braces} would interfere with the template delimiter syntax.",
 		"reference": "https://www.smarty.net/docs/en/language.function.literal.tpl"
 	},
 	"/literal": {
 		"prefix": ["/literal", "{/literal}"],
-		"body": "${SMARTY_LDELIM:{}/literal${SMARTY_RDELIM:\\}}$0",
+		"body": "{/literal}$0",
 		"description": "",
 		"reference": ""
 	},
 	"strip": {
 		"prefix": ["strip", "{strip}"],
-		"body": "${SMARTY_LDELIM:{}strip${SMARTY_RDELIM:\\}}\n\t$0\n${SMARTY_LDELIM:{}/strip${SMARTY_RDELIM:\\}}",
+		"body": "{strip}\n\t$0\n{/strip}",
 		"description": "Anything within {strip}{/strip} tags are stripped of the extra spaces or carriage returns at the beginnings and ends of the lines before they are displayed.",
 		"reference": "https://www.smarty.net/docs/en/language.function.strip.tpl"
 	},
 	"/strip": {
 		"prefix": ["/strip", "{/strip}"],
-		"body": "${SMARTY_LDELIM:{}/strip${SMARTY_RDELIM:\\}}$0",
+		"body": "{/strip}$0",
 		"description": "",
 		"reference": ""
 	}
