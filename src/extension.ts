@@ -83,7 +83,7 @@ export function activate(context: vscode.ExtensionContext) {
 		if (!activeTextEditor || activeTextEditor.document.languageId !== "smarty") {
 			return;
 		}
-		const smartyRegExp = /{(?:[^}{\n]+|{(?:[^}{]+|{[^}{]*})*})*}/g;
+		const smartyRegExp = /{.([^{}]|{([^{}])*})*}/g;
 		const docText = activeTextEditor.document.getText();
 		const smartyTags: vscode.DecorationOptions[] = [];
 

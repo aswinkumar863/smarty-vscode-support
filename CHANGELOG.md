@@ -1,3 +1,6 @@
+## 1.0.3 (April 4, 2020)
+* Performance improvements for highlight decoration
+
 ## 1.0.2 (March 31, 2020)
 * html comments inside literal block
 * highlighting decoration disabled inside literal block

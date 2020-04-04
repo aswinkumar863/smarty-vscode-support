@@ -2,7 +2,7 @@
 	"name": "smarty-template-support",
 	"displayName": "Smarty Template Support",
 	"description": "Smarty template support with formatting, folding, snippets, syntax highlighting and more",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"preview": true,
 	"publisher": "aswinkumar863",
 	"icon": "images/logo.png",
