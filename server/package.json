@@ -1,0 +1,24 @@
+{
+	"name": "smarty-template-support",
+	"displayName": "Smarty Template Support",
+	"description": "Smarty template support with formatting, folding, snippets, syntax highlighting and more",
+	"author": {
+		"name": "Aswin Kumar",
+		"email": "aswinkumar863@gmail.com"
+	},
+	"license": "MIT",
+	"engines": {
+		"node": "*"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/aswinkumar863/smarty-vscode-support.git"
+	},
+	"dependencies": {
+		"vscode-css-languageservice": "^4.1.1",
+		"vscode-html-languageservice": "^3.0.3",
+		"vscode-languageserver": "^6.1.1",
+		"vscode-languageserver-textdocument": "^1.0.1"
+	},
+	"scripts": {}
+}

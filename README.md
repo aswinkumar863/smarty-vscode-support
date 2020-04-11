@@ -24,7 +24,7 @@ Provides [Smarty Template](https://www.smarty.net/) support to Visual Studio Cod
 
 ## Requirements
 
-* VS Code `1.42.0` or higher
+* VS Code `1.43.0` or higher
 
 ## Extension Settings
 
@@ -44,11 +44,23 @@ Provides [Smarty Template](https://www.smarty.net/) support to Visual Studio Cod
 }
 ```
 
-**For Netbeans Theme:**
+## User Settings
+
+**For Emmet Abbreviations:**
+
+Paste the following into your `settings.json`
+
+```
+"emmet.includeLanguages": {
+  "smarty": "html"
+}
+```
+
+**For Netbeans Style Theme:**
 
 ![Netbeans Theme](images/netbeans-theme-preview.png)
 
-Copy and Paste the following into your user `settings.json`
+Paste the following into your `settings.json`
 
 ```
 "editor.tokenColorCustomizations": {
@@ -83,8 +95,7 @@ Copy and Paste the following into your user `settings.json`
         {
             "scope": ["source.smarty"],
             "settings": {
-                "foreground": "#D17C32",
-                "fontStyle": "bold"
+                "foreground": "#D17C32"
             }
         }
     ]

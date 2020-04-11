@@ -1,3 +1,8 @@
+## 1.1.0 (April 11, 2020)
+* Language Service for better HTML, CSS and JS support
+* Autocomplete for HTML, CSS and JS 
+* Hover Documentation for HTML, CSS and JS 
+
 ## 1.0.3 (April 4, 2020)
 * Performance improvements for highlight decoration
 
