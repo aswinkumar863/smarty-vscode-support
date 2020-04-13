@@ -7,7 +7,7 @@
 		"email": "aswinkumar863@gmail.com"
 	},
 	"license": "MIT",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"publisher": "aswinkumar863",
 	"icon": "images/logo.png",
 	"galleryBanner": {
@@ -96,14 +96,15 @@
 		"watch": "tsc -b -w",
 		"postinstall": "cd client && npm install && cd ../server && npm install && cd ..",
 		"test": "sh ./scripts/e2e.sh",
-		"vscode:prepublish": "webpack --mode production",
-		"webpack": "webpack --mode development",
-		"webpack-dev": "webpack --mode development --watch",
+		"vscode:prepublish": "npm run webpack",
+		"webpack": "webpack --mode production --config ./client/webpack.config.js && webpack --mode production --config ./server/webpack.config.js",
+		"webpack:dev": "webpack --mode none --config ./client/webpack.config.js && webpack --mode none --config ./server/webpack.config.js",
 		"test-compile": "tsc -p ./"
 	},
 	"devDependencies": {
 		"@types/mocha": "^5.2.7",
 		"@types/node": "^12.11.7",
+		"merge-options": "^2.0.0",
 		"ts-loader": "^6.2.2",
 		"tslint": "^5.16.0",
 		"webpack": "^4.42.1",

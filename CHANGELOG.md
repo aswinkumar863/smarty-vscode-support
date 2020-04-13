@@ -1,3 +1,6 @@
+## 1.2.0 (April 13, 2020)
+* bundled with webpack to reduce the size
+
 ## 1.1.0 (April 11, 2020)
 * Language Service for better HTML, CSS and JS support
 * Autocomplete for HTML, CSS and JS 
