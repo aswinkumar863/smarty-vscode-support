@@ -24,12 +24,12 @@
             "3": { "name": "punctuation.section.embedded.end.smarty" }
           },
           "contentName": "source.html",
-          "end": "\\s+(?!(\\{%?)\\*)\\s+({)(\\/literal)(})",
+          "end": "^\\s*({)(\\/literal)(})",
           "endCaptures": {
             "0": { "name": "source.smarty" },
-            "2": { "name": "punctuation.section.embedded.begin.smarty" },
-            "3": { "name": "support.function.built-in.smarty" },
-            "4": { "name": "punctuation.section.embedded.end.smarty" }
+            "1": { "name": "punctuation.section.embedded.begin.smarty" },
+            "2": { "name": "support.function.built-in.smarty" },
+            "3": { "name": "punctuation.section.embedded.end.smarty" }
           },
           "name": "meta.embedded.literal.tag.smarty",
           "patterns": [

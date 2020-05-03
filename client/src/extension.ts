@@ -1,26 +1,21 @@
-import * as path from 'path';
+import * as path from "path";
 import {
-	CancellationToken,
-	DecorationOptions,
-	DocumentFormattingEditProvider,
-	DocumentRangeFormattingEditProvider,
-	ExtensionContext,
-	FormattingOptions,
-	Hover,
-	languages,
-	MarkdownString,
-	ProviderResult,
-	Range,
-	TextDocument,
-	TextEdit,
-	window,
-	workspace,
-} from 'vscode';
-import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } from 'vscode-languageclient';
+    DecorationOptions,
+    ExtensionContext,
+    Hover,
+    languages,
+    MarkdownString,
+    Range,
+    TextDocument,
+    window,
+    workspace,
+} from "vscode";
+import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } from "vscode-languageclient";
 
-const beautify = require("js-beautify").html;
+import { BeautifyHTMLFormatter } from "./formatter";
+
+export const CONFIG: any = {};
 const snippets = require("../../snippets/snippets.json");
-const CONFIG: any = {};
 
 let smartyDecoration: any;
 let editorRegistration: any;
@@ -47,11 +42,11 @@ export function activate(context: ExtensionContext) {
 		const hexRegex = /^#([A-Fa-f0-9]{8})$/i
 		if (!hexRegex.test(CONFIG.highlightColor.light)) {
 			CONFIG.highlightColor.light = "#FFFA0040";
-			window.showWarningMessage('Invalid value for smarty.highlightColor.light setting (Default applied)');
+			window.showWarningMessage("Invalid value for smarty.highlightColor.light setting (Default applied)");
 		}
 		if (!hexRegex.test(CONFIG.highlightColor.dark)) {
 			CONFIG.highlightColor.dark = "#FFFFFF25";
-			window.showWarningMessage('Invalid value for smarty.highlightColor.dark setting (Default applied)');
+			window.showWarningMessage("Invalid value for smarty.highlightColor.dark setting (Default applied)");
 		}
 
 		smartyDecoration && smartyDecoration.dispose();
@@ -91,7 +86,7 @@ export function activate(context: ExtensionContext) {
 		if (!activeTextEditor || activeTextEditor.document.languageId !== "smarty") {
 			return;
 		}
-		const smartyRegExp = /{.([^{}]|{([^{}])*})*}/g;
+		const smartyRegExp = /{[^}\n\s]([^{}]|{[^{}]*})*}/g;
 		const docText = activeTextEditor.document.getText();
 		const smartyTags: DecorationOptions[] = [];
 
@@ -105,8 +100,8 @@ export function activate(context: ExtensionContext) {
 
 			// checking tag inside literal
 			const prevRange = smartyTags[smartyTags.length - 1];
-			const prevRangeTxt = prevRange ? activeTextEditor.document.getText(prevRange.range) : '';
-			if (!prevRangeTxt.includes('{literal}') || rangeTxt.includes('{/literal}')) {
+			const prevRangeTxt = prevRange ? activeTextEditor.document.getText(prevRange.range) : "";
+			if (!prevRangeTxt.includes("{literal}") || rangeTxt.includes("{/literal}")) {
 				smartyTags.push(decoration);
 			}
 		}
@@ -183,11 +178,11 @@ export function deactivate(): Thenable<void> | undefined {
 function startClient(context: ExtensionContext) {
 	// The server is implemented in node
 	let serverModule = context.asAbsolutePath(
-		path.join('server', 'out', 'server.js')
+		path.join("server", "out", "server.js")
 	);
 	// The debug options for the server
-	// --inspect=6009: runs the server in Node's Inspector mode so VS Code can attach to the server for debugging
-	let debugOptions = { execArgv: ['--nolazy', '--inspect=6009'] };
+	// --inspect=6009: runs the server in Node"s Inspector mode so VS Code can attach to the server for debugging
+	let debugOptions = { execArgv: ["--nolazy", "--inspect=6009"] };
 
 	// If the extension is launched in debug mode then the debug server options are used
 	// Otherwise the run options are used
@@ -203,13 +198,13 @@ function startClient(context: ExtensionContext) {
 	// Options to control the language client
 	let clientOptions: LanguageClientOptions = {
 		// Register the server for plain text documents
-		documentSelector: [{ scheme: 'file', language: 'smarty' }]
+		documentSelector: [{ scheme: "file", language: "smarty" }]
 	};
 
 	// Create the language client and start the client.
 	client = new LanguageClient(
-		'languageServerExample',
-		'Language Server Example',
+		"languageServerExample",
+		"Language Server Example",
 		serverOptions,
 		clientOptions
 	);
@@ -218,42 +213,7 @@ function startClient(context: ExtensionContext) {
 	client.start();
 }
 
-function fullDocumentRange(document: TextDocument): Range {
+export function fullDocumentRange(document: TextDocument): Range {
 	const lastLineId = document.lineCount - 1;
 	return new Range(0, 0, lastLineId, document.lineAt(lastLineId).text.length);
-}
-
-class BeautifyHTMLFormatter implements DocumentFormattingEditProvider, DocumentRangeFormattingEditProvider {
-
-	provideDocumentRangeFormattingEdits(document: TextDocument, range: Range, _options: FormattingOptions, _token: CancellationToken): ProviderResult<TextEdit[]> {
-
-		const text = document.getText(range);
-		const beautifyOptions = this.getBeautifyOptions(document.uri.fsPath);
-		const formatted = beautify(text, beautifyOptions);
-
-		return [TextEdit.replace(range, formatted)];
-	}
-
-	provideDocumentFormattingEdits(document: TextDocument, _options: FormattingOptions, _token: CancellationToken): ProviderResult<TextEdit[]> {
-		const { activeTextEditor } = window;
-		if (activeTextEditor && activeTextEditor.document.languageId === "smarty") {
-			const text = document.getText();
-
-			const beautifyOptions = this.getBeautifyOptions(document.uri.fsPath);
-			const formatted = beautify(text, beautifyOptions);
-
-			const range = fullDocumentRange(document);
-			return [TextEdit.replace(range, formatted)];
-		}
-	}
-
-	getBeautifyOptions(path: string) {
-		const options = {
-			indent_size: CONFIG.tabSize,
-			indent_with_tabs: !CONFIG.insertSpaces,
-			indent_handlebars: true,
-			indent_inner_html: true
-		};
-		return options;
-	}
 }

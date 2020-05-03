@@ -17,6 +17,7 @@ Provides [Smarty Template](https://www.smarty.net/) support to Visual Studio Cod
 * Bracket autoclosing
 * Bracket autosurrounding
 * Hover documentation
+* Auto Indentation
 
 ## What it looks like
 

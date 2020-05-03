@@ -1,3 +1,7 @@
+## 1.3.0 (May 3, 2020)
+* indentationRules added
+* indentation on formatting
+
 ## 1.2.0 (April 13, 2020)
 * bundled with webpack to reduce the size
 
@@ -18,7 +22,6 @@
 
 ## 1.0.0 (March 28, 2020)
 
-Features:
 * Syntax highlighting
 * Snippet completion
 * Bracket autoclosing
