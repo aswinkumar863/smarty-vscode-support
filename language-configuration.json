@@ -23,12 +23,12 @@
 	],
 	"folding": {
 		"markers": {
-			"start": "^\\s*{(block|capture|for|foreach|function|if|literal|section|setfilter|strip|while)\\b.+}",
-			"end": "^\\s*{/(block|capture|for|foreach|function|if|literal|section|setfilter|strip|while)\\b}"
+			"start": "{{?(block|capture|for|foreach|function|if|literal|section|setfilter|strip|while)\\b.+}}?",
+			"end": "{{?/(block|capture|for|foreach|function|if|literal|section|setfilter|strip|while)\\b}}?"
 		}
 	},
 	"indentationRules": {
-		"increaseIndentPattern": "^\\s*{(block|capture|for|foreach|function|if|literal|section|setfilter|strip|while)\\b.+}",
-		"decreaseIndentPattern": "^\\s*{/(block|capture|for|foreach|function|if|literal|section|setfilter|strip|while)\\b}"
+		"increaseIndentPattern": "{{?(block|capture|for|foreach|function|if|literal|section|setfilter|strip|while)\\b.+}}?",
+		"decreaseIndentPattern": "{{?/(block|capture|for|foreach|function|if|literal|section|setfilter|strip|while)\\b}}?"
 	}
 }

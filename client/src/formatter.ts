@@ -33,14 +33,14 @@ export class BeautifyHTMLFormatter implements DocumentFormattingEditProvider, Do
 
 	beautifySmarty(docText: String) {
 		const startedRegions = [];
-		const smartyRegExp = /^.*{.([^{}]|{([^{}])*})*}.*$/gm;
+		const smartyRegExp = /^.*{{?.([^{}]|{([^{}])*})*}}?.*$/gm;
 		docText = docText.replace(smartyRegExp, "/* beautify ignore:start */$&/* beautify ignore:end */");
 
 		const regionTag = {
-			foldStartRegex: /{(block|capture|for|foreach|function|if|literal|section|setfilter|strip|while)\b.*?}/,
-			foldMiddleRegex: /{(else(if)?|foreachelse)\b.*?}/,
-			foldEndRegex: /{\/(block|capture|for|foreach|function|if|literal|section|setfilter|strip|while)\b}/,
-			foldBothRegex: /{\/?(block|capture|for|foreach|function|if|literal|section|setfilter|strip|while|else|elseif|foreachelse)\b.*?}/g
+			foldStartRegex: /{{?(block|capture|for|foreach|function|if|literal|section|setfilter|strip|while)\b.*?}}?/,
+			foldMiddleRegex: /{{?(else(if)?|foreachelse)\b.*?}}?/,
+			foldEndRegex: /{{?\/(block|capture|for|foreach|function|if|literal|section|setfilter|strip|while)\b}}?/,
+			foldBothRegex: /{{?\/?(block|capture|for|foreach|function|if|literal|section|setfilter|strip|while|else|elseif|foreachelse)\b.*?}}?/g
 		};
 		
 		const beautifyOptions = this.getBeautifyOptions();
@@ -86,7 +86,7 @@ export class BeautifyHTMLFormatter implements DocumentFormattingEditProvider, Do
 		const options = {
 			indent_size: CONFIG.tabSize,
 			indent_with_tabs: !CONFIG.insertSpaces,
-			indent_handlebars: true,
+			indent_handlebars: false,
 			indent_inner_html: true,
 			jslint_happy: false,
 			brace_style: "collapse-preserve-inline"

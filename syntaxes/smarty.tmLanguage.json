@@ -16,7 +16,7 @@
     "blocks": {
       "patterns": [
         {
-          "begin": "({)(literal)(})",
+          "begin": "({{?)(literal)(}}?)",
           "beginCaptures": {
             "0": { "name": "source.smarty" },
             "1": { "name": "punctuation.section.embedded.begin.smarty" },
@@ -24,7 +24,7 @@
             "3": { "name": "punctuation.section.embedded.end.smarty" }
           },
           "contentName": "source.html",
-          "end": "^\\s*({)(\\/literal)(})",
+          "end": "^\\s*({{?)(\\/literal)(}}?)",
           "endCaptures": {
             "0": { "name": "source.smarty" },
             "1": { "name": "punctuation.section.embedded.begin.smarty" },
@@ -37,13 +37,32 @@
           ]
         },
         {
-          "begin": "(\\{%?)",
+          "begin": "({{)",
           "beginCaptures": [
             { "name": "source.smarty" },
             { "name": "punctuation.section.embedded.begin.smarty" }
           ],
           "contentName": "source.smarty",
-          "end": "(%?\\})",
+          "end": "(}})",
+          "endCaptures": [
+            { "name": "source.smarty" },
+            { "name": "punctuation.section.embedded.end.smarty" }
+          ],
+          "name": "meta.embedded.line.tag.smarty",
+          "patterns": [
+            { "include": "#strings" },
+            { "include": "#variables" },
+            { "include": "#lang" }
+          ]
+        },
+        {
+          "begin": "({)",
+          "beginCaptures": [
+            { "name": "source.smarty" },
+            { "name": "punctuation.section.embedded.begin.smarty" }
+          ],
+          "contentName": "source.smarty",
+          "end": "(})",
           "endCaptures": [
             { "name": "source.smarty" },
             { "name": "punctuation.section.embedded.end.smarty" }
@@ -60,11 +79,11 @@
     "comments": {
       "patterns": [
         {
-          "begin": "(\\{%?)\\*",
+          "begin": "({{?)\\*",
           "beginCaptures": {
             "1": { "name": "punctuation.definition.comment.smarty" }
           },
-          "end": "\\*(%?\\})",
+          "end": "\\*(}}?)",
           "name": "comment.block.smarty",
           "patterns": []
         }

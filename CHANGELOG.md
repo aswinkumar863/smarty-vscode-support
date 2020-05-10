@@ -1,3 +1,6 @@
+## 1.4.0 (May 10, 2020)
+* Added `{{...}}` delimiter support
+
 ## 1.3.0 (May 3, 2020)
 * indentationRules added
 * indentation on formatting

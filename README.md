@@ -5,7 +5,8 @@
 [![Rating](https://vsmarketplacebadge.apphb.com/rating-short/aswinkumar863.smarty-template-support.svg)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support#review-details)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed/aswinkumar863/smarty-vscode-support?color=blue)
 
-Provides [Smarty Template](https://www.smarty.net/) support to Visual Studio Code.
+This extension provides [Smarty Template](https://www.smarty.net/) support for Visual Studio Code. 
+Supports `{...}` and `{{...}}` delimiters.
 
 ## Features
 

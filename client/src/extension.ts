@@ -86,7 +86,7 @@ export function activate(context: ExtensionContext) {
 		if (!activeTextEditor || activeTextEditor.document.languageId !== "smarty") {
 			return;
 		}
-		const smartyRegExp = /{[^}\n\s]([^{}]|{[^{}]*})*}/g;
+		const smartyRegExp = /{{?[^}\n\s]([^{}]|{[^{}]*})*}}?/g;
 		const docText = activeTextEditor.document.getText();
 		const smartyTags: DecorationOptions[] = [];
 
@@ -203,8 +203,8 @@ function startClient(context: ExtensionContext) {
 
 	// Create the language client and start the client.
 	client = new LanguageClient(
-		"languageServerExample",
-		"Language Server Example",
+		"smarty",
+		"Smarty Language Server",
 		serverOptions,
 		clientOptions
 	);
