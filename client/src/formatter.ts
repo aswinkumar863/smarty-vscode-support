@@ -33,8 +33,13 @@ export class BeautifyHTMLFormatter implements DocumentFormattingEditProvider, Do
 
 	beautifySmarty(docText: String) {
 		const startedRegions = [];
+
+		const scriptRegExp = /<script[\s\S]*?>[\s\S]*?<\/script>/g;
 		const smartyRegExp = /^.*{{?.([^{}]|{([^{}])*})*}}?.*$/gm;
-		docText = docText.replace(smartyRegExp, "/* beautify ignore:start */$&/* beautify ignore:end */");
+
+		docText = docText.replace(scriptRegExp, match => {
+			return match.replace(smartyRegExp, "/* beautify ignore:start */$&/* beautify ignore:end */");
+		});
 
 		const regionTag = {
 			foldStartRegex: /{{?(block|capture|for|foreach|function|if|literal|section|setfilter|strip|while)\b.*?}}?/,
@@ -42,12 +47,14 @@ export class BeautifyHTMLFormatter implements DocumentFormattingEditProvider, Do
 			foldEndRegex: /{{?\/(block|capture|for|foreach|function|if|literal|section|setfilter|strip|while)\b}}?/,
 			foldBothRegex: /{{?\/?(block|capture|for|foreach|function|if|literal|section|setfilter|strip|while|else|elseif|foreachelse)\b.*?}}?/g
 		};
-		
+
 		const beautifyOptions = this.getBeautifyOptions();
 		let formatted = beautify(docText, beautifyOptions);
+
 		const lines = formatted.split("\n");
 		const indent_char = beautifyOptions.indent_with_tabs ? "	" : " ".repeat(beautifyOptions.indent_size);
-		let i = 0
+		let i = 0;
+
 		while (lines[i]) {
 			let line = lines[i];
 			let reapeat = startedRegions.length;
@@ -64,20 +71,21 @@ export class BeautifyHTMLFormatter implements DocumentFormattingEditProvider, Do
 				startedRegions.pop();
 				reapeat--;
 			}
-			if(startMatch[1] && (startMatch[1] == endMatch[1])) {
+			if (startMatch[1] && (startMatch[1] == endMatch[1])) {
 				startedRegions.pop();
-			} else if((startMatch.length + middleMatch.length + endMatch.length) > 2) {
+			} else if ((startMatch.length + middleMatch.length + endMatch.length) > 2) {
 				let iter = 0;
 
 				const spaces = lines[i].replace(/^( +).*/s, "$1")
-				const newLines = lines[i].replace(regionTag.foldBothRegex, match =>  (iter++ ? "\n" + spaces : "") + match).split('\n')
+				const newLines = lines[i].replace(regionTag.foldBothRegex, match => (iter++ ? "\n" + spaces : "") + match).split('\n')
 				lines.splice(i, 1, ...newLines);
 			}
-			
+
 			lines[i] = indent_char.repeat(Math.max(0, reapeat)) + lines[i]
 				.replace(/\/\* beautify ignore:(start|end) \*\/(\s+)?/g, "");
 			i += 1;
 		}
+
 		formatted = lines.join("\n").replace(/\/\* beautify ignore:(start|end) \*\/([ ])?/g, "");
 		return formatted;
 	}
