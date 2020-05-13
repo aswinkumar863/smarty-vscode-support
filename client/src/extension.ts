@@ -198,7 +198,11 @@ function startClient(context: ExtensionContext) {
 	// Options to control the language client
 	let clientOptions: LanguageClientOptions = {
 		// Register the server for plain text documents
-		documentSelector: [{ scheme: "file", language: "smarty" }]
+		documentSelector: [{ scheme: "file", language: "smarty" }],
+		initializationOptions: {
+			dataPaths: [],
+			embeddedLanguages: { css: true, javascript: true }
+		}
 	};
 
 	// Create the language client and start the client.

@@ -1,4 +1,9 @@
-import { LanguageService, Position, Range, TextDocument, TokenType } from './languageModes';
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+import { TextDocument, Position, LanguageService, TokenType, Range } from './languageModes';
 
 export interface LanguageRange extends Range {
 	languageId: string | undefined;
