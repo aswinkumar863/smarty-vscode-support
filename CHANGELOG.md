@@ -1,3 +1,7 @@
+## 1.5.0 (May 14, 2020)
+* Updated HTML Language Server
+* Bug Fixes
+
 ## 1.4.0 (May 10, 2020)
 * Added `{{...}}` delimiter support
 
