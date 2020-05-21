@@ -153,7 +153,7 @@ connection.onInitialize((params: InitializeParams): InitializeResult => {
 		signatureHelpProvider: { triggerCharacters: ['('] },
 		referencesProvider: true,
 		colorProvider: {},
-		foldingRangeProvider: true,
+		foldingRangeProvider: false,
 		selectionRangeProvider: true,
 		renameProvider: true
 	};
@@ -236,7 +236,7 @@ function triggerValidation(textDocument: TextDocument): void {
 }
 
 function isValidationEnabled(languageId: string, settings: Settings = globalSettings) {
-	if (languageId === 'javascript') return false; // Issue #2
+	return false; // Issue #2
 	const validationSettings = settings && settings.html && settings.html.validate;
 	if (validationSettings) {
 		return languageId === 'css' && validationSettings.styles !== false || languageId === 'javascript' && validationSettings.scripts !== false;
