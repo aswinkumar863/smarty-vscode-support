@@ -34,10 +34,10 @@ export class BeautifyHTMLFormatter implements DocumentFormattingEditProvider, Do
 	beautifySmarty(docText: String) {
 		const startedRegions = [];
 
-		const scriptRegExp = /<script[\s\S]*?>[\s\S]*?<\/script>/g;
+		const embeddedRegExp = /<(script|style)[\s\S]*?>[\s\S]*?<\/(script|style)>/g;
 		const smartyRegExp = /^.*{{?.([^{}]|{([^{}])*})*}}?.*$/gm;
 
-		docText = docText.replace(scriptRegExp, match => {
+		docText = docText.replace(embeddedRegExp, match => {
 			return match.replace(smartyRegExp, "/* beautify ignore:start */$&/* beautify ignore:end */");
 		});
 
