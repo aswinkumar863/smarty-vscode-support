@@ -1,14 +1,15 @@
 import * as path from "path";
 import {
-    DecorationOptions,
-    ExtensionContext,
-    Hover,
-    languages,
-    MarkdownString,
-    Range,
-    TextDocument,
-    window,
-    workspace,
+	CharacterPair,
+	DecorationOptions,
+	ExtensionContext,
+	Hover,
+	languages,
+	MarkdownString,
+	Range,
+	TextDocument,
+	window,
+	workspace,
 } from "vscode";
 import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } from "vscode-languageclient";
 
@@ -65,12 +66,14 @@ export function activate(context: ExtensionContext) {
 
 		if (activeTextEditor) {
 			triggerUpdateDecorations();
+			setLanguageConfiguration();
 		}
 
 		editorRegistration = window.onDidChangeActiveTextEditor(editor => {
 			activeTextEditor = editor;
 			if (editor) {
 				updateDecorations();
+				setLanguageConfiguration();
 			}
 		}, null, context.subscriptions);
 
@@ -114,6 +117,22 @@ export function activate(context: ExtensionContext) {
 			timeout = undefined;
 		}
 		timeout = setTimeout(updateDecorations, 500);
+	}
+
+	// toggle configuration between {} and {{}} delimiters
+	function setLanguageConfiguration() {
+		let pair: CharacterPair = ["{*", "*}"];
+
+		const doubleBraceRegExp = /({{\*.*?\*}})|{{[^}\n\s]([^{}]|{[^{}]*})*}}/m;
+		const docText = activeTextEditor.document.getText();
+
+		if (doubleBraceRegExp.exec(docText)) {
+			pair = ["{{*", "*}}"];
+		}
+
+		languages.setLanguageConfiguration("smarty", {
+			comments: { blockComment: pair }
+		});
 	}
 
 	// smarty document formatting providers
@@ -163,7 +182,7 @@ export function activate(context: ExtensionContext) {
 			return new Hover(contents);
 		}
 	});
-	
+
 	startClient(context);
 	setup();
 }
