@@ -59,7 +59,7 @@
 				"scopeName": "text.html.smarty",
 				"path": "./syntaxes/smarty.tmLanguage.json",
 				"embeddedLanguages": {
-					"source.html": "html",
+					"text.html.derivative": "html",
 					"source.js": "javascript",
 					"source.css": "css"
 				}

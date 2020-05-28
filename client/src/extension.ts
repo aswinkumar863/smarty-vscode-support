@@ -86,7 +86,7 @@ export function activate(context: ExtensionContext) {
 		if (!activeTextEditor || activeTextEditor.document.languageId !== "smarty") {
 			return;
 		}
-		const smartyRegExp = /{{?[^}\n\s]([^{}]|{[^{}]*})*}}?/g;
+		const smartyRegExp = /({{?\*.*?\*}}?)|{{?[^}\n\s]([^{}]|{[^{}]*})*}}?/g;
 		const docText = activeTextEditor.document.getText();
 		const smartyTags: DecorationOptions[] = [];
 
