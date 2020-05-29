@@ -8,6 +8,11 @@
 				{ "include": "#comments" },
 				{ "include": "#blocks" }
 			]
+		},
+		"L:text.html.smarty -source.css -source.js": {
+			"patterns": [
+				{ "include": "#literals" }
+			]
 		}
 	},
 	"patterns": [
