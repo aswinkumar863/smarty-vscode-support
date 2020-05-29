@@ -174,12 +174,14 @@ export function activate(context: ExtensionContext) {
 				return null;
 			}
 
-			let text = `${snippet.description}`;
+			const md = new MarkdownString();
+			md.appendCodeblock(`{${word}}`);
+			md.appendMarkdown(`${snippet.description}`);
+
 			if (snippet.reference) {
-				text += `\\\n\\\n[Smarty Reference](${snippet.reference})`;
+				md.appendMarkdown(`\n\r[Smarty Reference](${snippet.reference})`);
 			}
-			const contents = new MarkdownString(text);
-			return new Hover(contents);
+			return new Hover(md);
 		}
 	});
 
