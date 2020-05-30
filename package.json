@@ -72,6 +72,21 @@
 				"path": "./snippets/snippets.json"
 			}
 		],
+		"commands": [
+			{
+				"category": "Smarty",
+				"command": "smarty.toggleHighlight",
+				"title": "Toggle Highlight Decoration"
+			}
+		],		
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "smarty.toggleHighlight",
+					"when": "editorLangId == smarty"
+				}
+			]
+		},
 		"configuration": {
 			"type": "object",
 			"title": "Smarty Template Support",

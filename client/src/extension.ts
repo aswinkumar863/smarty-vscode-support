@@ -10,6 +10,8 @@ import {
 	TextDocument,
 	window,
 	workspace,
+	commands,
+	ConfigurationTarget,
 } from "vscode";
 import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } from "vscode-languageclient";
 
@@ -183,6 +185,12 @@ export function activate(context: ExtensionContext) {
 			}
 			return new Hover(md);
 		}
+	});
+
+	// command to toggle highlight decoration
+	commands.registerCommand("smarty.toggleHighlight", () => {
+		const getConfig = workspace.getConfiguration('smarty');
+		getConfig.update('highlight', !getConfig.get('highlight'), ConfigurationTarget.Global);
 	});
 
 	startClient(context);
