@@ -1,3 +1,10 @@
+## 1.6.0 (May 31, 2020)
+* Rewrite language grammer
+* Comment toggling for `{{...}}` delimiters
+* Improved hover documentation
+* Toggle highlight decoration command
+* Bug Fixes
+
 ## 1.5.0 (May 14, 2020)
 * Updated HTML Language Server
 * Bug Fixes
