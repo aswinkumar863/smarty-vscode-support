@@ -32,7 +32,6 @@ export class BeautifyHTMLFormatter implements DocumentFormattingEditProvider, Do
 	}
 
 	beautifySmarty(docText: String) {
-		var _a, _b, _c;
 		const startedRegions = [];
 		const embeddedRegExp = /<(script|style)[\s\S]*?>[\s\S]*?<\/(script|style)>/g;
 		const smartyRegExp = /^.*{{?.([^{}]|{([^{}])*})*}}?.*$/gm;
@@ -51,9 +50,9 @@ export class BeautifyHTMLFormatter implements DocumentFormattingEditProvider, Do
 		for (let i = 0; i < lines.length; i++) {
 			let line = lines[i];
 			let reapeat = startedRegions.length;
-			let startMatch = (_a = line.match(regionTag.foldStartRegex)) !== null && _a !== void 0 ? _a : [];
-			let middleMatch = (_b = line.match(regionTag.foldMiddleRegex)) !== null && _b !== void 0 ? _b : [];
-			let endMatch = (_c = line.match(regionTag.foldEndRegex)) !== null && _c !== void 0 ? _c : [];
+			let startMatch = line.match(regionTag.foldStartRegex) ?? [];
+			let middleMatch = line.match(regionTag.foldMiddleRegex) ?? [];
+			let endMatch = line.match(regionTag.foldEndRegex) ?? [];
 			if (startMatch.length) {
 				startedRegions.push(startMatch[0]);
 			} else if (middleMatch.length) {
