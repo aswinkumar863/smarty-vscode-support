@@ -78,7 +78,7 @@
 				"command": "smarty.toggleHighlight",
 				"title": "Toggle Highlight Decoration"
 			}
-		],		
+		],
 		"menus": {
 			"commandPalette": [
 				{
@@ -103,6 +103,11 @@
 						"dark": "#FFFFFF25",
 						"light": "#FFFA0040"
 					}
+				},
+				"smarty.beautify": {
+					"type": "boolean",
+					"description": "Enable/disable js-beautify",
+					"default": true
 				}
 			}
 		}

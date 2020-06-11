@@ -49,8 +49,12 @@ export class BeautifyHTMLFormatter implements DocumentFormattingEditProvider, Do
 		};
 
 		const beautifyOptions = this.getBeautifyOptions();
-		let formatted = beautify(docText, beautifyOptions);
-
+		let formatted : String;
+		if (CONFIG.beautify) {
+			formatted = beautify(docText, beautifyOptions);
+		} else {
+			formatted = docText;
+		}
 		const lines = formatted.split("\n");
 		const indent_char = beautifyOptions.indent_with_tabs ? "	" : " ".repeat(beautifyOptions.indent_size);
 		let i = 0;

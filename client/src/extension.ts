@@ -38,7 +38,8 @@ export function activate(context: ExtensionContext) {
 			highlight: getConfig.get("smarty.highlight") as Boolean,
 			highlightColor: getConfig.get("smarty.highlightColor") as Object,
 			tabSize: getConfig.get("editor.tabSize") as Number,
-			insertSpaces: getConfig.get("editor.insertSpaces") as Boolean
+			insertSpaces: getConfig.get("editor.insertSpaces") as Boolean,
+			beautify: getConfig.get("smarty.beautify") as Boolean
 		});
 
 		// validate highlightColor setting
