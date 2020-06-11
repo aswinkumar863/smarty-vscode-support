@@ -78,7 +78,7 @@
 				"command": "smarty.toggleHighlight",
 				"title": "Toggle Highlight Decoration"
 			}
-		],		
+		],
 		"menus": {
 			"commandPalette": [
 				{
