@@ -31,7 +31,7 @@ export class BeautifyHTMLFormatter implements DocumentFormattingEditProvider, Do
 		return [TextEdit.replace(range, formatted)];
 	}
 
-	beautifySmarty(docText) {
+	beautifySmarty(docText: string) {
 		var _a, _b, _c;
 		const startedRegions = [];
 		const embeddedRegExp = /<(script|style)[\s\S]*?>[\s\S]*?<\/(script|style)>/g;
