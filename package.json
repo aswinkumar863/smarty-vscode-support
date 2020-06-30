@@ -121,7 +121,7 @@
 		"@types/mocha": "^5.2.7",
 		"@types/node": "^12.11.7",
 		"merge-options": "^2.0.0",
-		"ts-loader": "^6.2.2",
+		"ts-loader": "^7.0.5",
 		"tslint": "^5.16.0",
 		"webpack": "^4.42.1",
 		"webpack-cli": "^3.3.11"
