@@ -122,8 +122,8 @@
 		"@types/node": "^12.11.7",
 		"merge-options": "^2.0.0",
 		"ts-loader": "^7.0.5",
-		"tslint": "^5.16.0",
-		"webpack": "^4.43.0",
+		"tslint": "^6.1.2",
+		"webpack": "^4.42.1",
 		"webpack-cli": "^3.3.11"
 	},
 	"dependencies": {
