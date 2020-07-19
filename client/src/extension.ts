@@ -17,8 +17,27 @@ import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } f
 
 import { BeautifyHTMLFormatter } from "./formatter";
 
-export const CONFIG: any = {};
 const snippets = require("../../snippets/snippets.json");
+
+interface HighlightColorConfig {
+	light?: string,
+	dark?: string
+}
+
+interface Configuration {
+	highlight?: boolean,
+	highlightColor?: HighlightColorConfig,
+	tabSize?: number,
+	insertSpaces?: boolean,
+	indentInnerHtml?: boolean,
+	maxPreserveNewLines?: number | null,
+	preserveNewLines?: boolean,
+	wrapLineLength?: number,
+	wrapAttributes?: string,
+	endWithNewline?: boolean
+}
+
+export const CONFIG: Configuration = {};
 
 let smartyDecoration: any;
 let editorRegistration: any;
@@ -35,10 +54,16 @@ export function activate(context: ExtensionContext) {
 		const getConfig = workspace.getConfiguration();
 
 		Object.assign(CONFIG, {
-			highlight: getConfig.get("smarty.highlight") as Boolean,
-			highlightColor: getConfig.get("smarty.highlightColor") as Object,
-			tabSize: getConfig.get("editor.tabSize") as Number,
-			insertSpaces: getConfig.get("editor.insertSpaces") as Boolean
+			highlight: getConfig.get("smarty.highlight"),
+			highlightColor: getConfig.get("smarty.highlightColor") as HighlightColorConfig,
+			tabSize: getConfig.get("editor.tabSize"),
+			insertSpaces: getConfig.get("editor.insertSpaces"),
+			indentInnerHtml: getConfig.get("html.format.indentInnerHtml"),
+			maxPreserveNewLines: getConfig.get("html.format.maxPreserveNewLines"),
+			preserveNewLines: getConfig.get("html.format.preserveNewLines"),
+			wrapLineLength: getConfig.get("html.format.wrapLineLength"),
+			wrapAttributes: getConfig.get("html.format.wrapAttributes"),
+			endWithNewline: getConfig.get("html.format.endWithNewline"),
 		});
 
 		// validate highlightColor setting
@@ -150,13 +175,8 @@ export function activate(context: ExtensionContext) {
 
 	// subscribe to configuration change
 	workspace.onDidChangeConfiguration(event => {
-		let affected = event.affectsConfiguration("smarty.highlight") ||
-			event.affectsConfiguration("smarty.highlightColor") ||
-			event.affectsConfiguration("editor.tabSize") ||
-			event.affectsConfiguration("editor.insertSpaces");
-		if (affected) {
-			setup();
-		}
+		const configs: Array<any> = ["editor", "html.format", "smarty"];
+		configs.some(config => event.affectsConfiguration(config)) && setup();
 	});
 
 	// smarty document hover provider

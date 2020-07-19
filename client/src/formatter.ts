@@ -95,9 +95,16 @@ export class BeautifyHTMLFormatter implements DocumentFormattingEditProvider, Do
 			indent_size: CONFIG.tabSize,
 			indent_with_tabs: !CONFIG.insertSpaces,
 			indent_handlebars: false,
-			indent_inner_html: true,
+			indent_inner_html: CONFIG.indentInnerHtml,
+			max_preserve_newlines: CONFIG.maxPreserveNewLines,
+			preserve_newlines: CONFIG.preserveNewLines,
+			wrap_line_length: CONFIG.wrapLineLength,
+			wrap_attributes: CONFIG.wrapAttributes,
 			jslint_happy: false,
-			brace_style: "collapse-preserve-inline"
+			brace_style: "collapse-preserve-inline",
+			html: {
+				end_with_newline: CONFIG.endWithNewline,
+			}
 		};
 
 		return options;
