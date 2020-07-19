@@ -94,7 +94,7 @@
 				"smarty.highlight": {
 					"type": "boolean",
 					"description": "Enable/disable highlight decoration of Smarty tags",
-					"default": true
+					"default": false
 				},
 				"smarty.highlightColor": {
 					"type": "object",
