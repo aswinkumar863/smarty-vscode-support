@@ -11,7 +11,7 @@ import {
 
 import { CONFIG, fullDocumentRange } from "./extension";
 
-const beautify = require("js-beautify").html;
+const beautify = require("./js-beautify").html;
 
 export class BeautifyHTMLFormatter implements DocumentFormattingEditProvider, DocumentRangeFormattingEditProvider {
 
@@ -35,7 +35,7 @@ export class BeautifyHTMLFormatter implements DocumentFormattingEditProvider, Do
 		const startedRegions = [];
 
 		const embeddedRegExp = /<(script|style)[\s\S]*?>[\s\S]*?<\/(script|style)>/g;
-		const smartyRegExp = /^.*{{?.([^{}]|{([^{}])*})*}}?.*$/gm;
+		const smartyRegExp = /^.*{{?[^}\n\s]([^{}]|{[^{}]*})*}}?.*$/gm;
 
 		docText = docText.replace(embeddedRegExp, match => {
 			return match.replace(smartyRegExp, "/* beautify ignore:start */$&/* beautify ignore:end */");

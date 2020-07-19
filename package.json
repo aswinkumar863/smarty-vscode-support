@@ -127,8 +127,6 @@
 		"webpack-cli": "^3.3.12"
 	},
 	"dependencies": {
-		"@types/js-beautify": "^1.11.0",
-		"js-beautify": "^1.11.0",
 		"typescript": "^3.9.7"
 	}
 }
