@@ -1,19 +1,14 @@
 import {
-	CancellationToken,
-	DocumentFormattingEditProvider,
-	DocumentRangeFormattingEditProvider,
-	FormattingOptions,
-	ProviderResult,
-	Range,
-	TextDocument,
-	TextEdit
+	CancellationToken, DocumentFormattingEditProvider, DocumentRangeFormattingEditProvider, FormattingOptions,
+	ProviderResult, Range, TextDocument, TextEdit
 } from "vscode";
 
-import { CONFIG, fullDocumentRange } from "./extension";
+import { CONFIG } from "../configuration";
+import { fullDocumentRange } from "../utils";
 
-const beautify = require("./js-beautify").html;
+const beautify = require("../js-beautify").html;
 
-export class BeautifyHTMLFormatter implements DocumentFormattingEditProvider, DocumentRangeFormattingEditProvider {
+export class FormattingProvider implements DocumentFormattingEditProvider, DocumentRangeFormattingEditProvider {
 
 	provideDocumentRangeFormattingEdits(document: TextDocument, range: Range, _options: FormattingOptions, _token: CancellationToken): ProviderResult<TextEdit[]> {
 		const newrange = new Range(range.start.line, 0, range.end.line, range.end.character);
@@ -31,7 +26,7 @@ export class BeautifyHTMLFormatter implements DocumentFormattingEditProvider, Do
 		return [TextEdit.replace(range, formatted)];
 	}
 
-	beautifySmarty(docText: String) {
+	beautifySmarty(docText: String): string {
 		const startedRegions = [];
 
 		const embeddedRegExp = /<(script|style)[\s\S]*?>[\s\S]*?<\/(script|style)>/g;
@@ -99,7 +94,7 @@ export class BeautifyHTMLFormatter implements DocumentFormattingEditProvider, Do
 			max_preserve_newlines: CONFIG.maxPreserveNewLines,
 			preserve_newlines: CONFIG.preserveNewLines,
 			wrap_line_length: CONFIG.wrapLineLength,
-			wrap_attributes: CONFIG.wrapAttributes,
+			// wrap_attributes: CONFIG.wrapAttributes, // Featue disabled to avoid smarty formatting errors
 			jslint_happy: false,
 			brace_style: "collapse-preserve-inline",
 			html: {

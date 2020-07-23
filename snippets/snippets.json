@@ -3,19 +3,19 @@
 		"prefix": ["append", "{append}"],
 		"body": "{append var=\"${1:name}\" value=\"${2:value}\" index=\"${3:last}\"}$0",
 		"description": "{append} is used for creating or appending template variable arrays during the execution of a template.",
-		"reference": "https://www.smarty.net/docs/en/language.function.append.tpl"
+		"reference": "language.function.append.tpl"
 	},
 	"assign": {
 		"prefix": ["assign", "{assign}"],
 		"body": "{assign var=\"${1:name}\" value=${2:value}${4: scope=${3:scope}}}$0",
 		"description": "{assign} is used for assigning template variables during the execution of a template.",
-		"reference": "https://www.smarty.net/docs/en/language.function.assign.tpl"
+		"reference": "language.function.assign.tpl"
 	},
 	"block": {
 		"prefix": ["block", "{block}"],
 		"body": "{block name=${1:name}}\n\t$0\n{/block}",
 		"description": "{block} is used to define a named area of template source for template inheritance.",
-		"reference": "https://www.smarty.net/docs/en/language.function.block.tpl"
+		"reference": "language.function.block.tpl"
 	},
 	"/block": {
 		"prefix": "/block",
@@ -27,13 +27,13 @@
 		"prefix": ["break", "{break}"],
 		"body": "{break}$0",
 		"description": "{break} aborts the iteration of the array.",
-		"reference": "https://www.smarty.net/docs/en/language.function.foreach.tpl#foreach.construct.break"
+		"reference": "language.function.foreach.tpl#foreach.construct.break"
 	},
 	"capture": {
 		"prefix": ["capture", "{capture}"],
 		"body": "{capture ${2:name=\"${1:name}\" }${4:assign=\"${3:variable}\" }${6:append=\"${5:array_variable}\"}}\n\t$0\n{/capture}",
 		"description": "{capture} is used to collect the output of the template between the tags into a variable instead of displaying it. Any content between {capture name='foo'} and {/capture} is collected into the variable specified in the name attribute.",
-		"reference": "https://www.smarty.net/docs/en/language.function.capture.tpl"
+		"reference": "language.function.capture.tpl"
 	},
 	"/capture": {
 		"prefix": ["/capture", "{/capture}"],
@@ -57,7 +57,7 @@
 		"prefix": ["debug", "{debug}"],
 		"body": "{\\$${1:variable}|@debug_print_var}$0",
 		"description": "{debug} dumps the debug console to the page.",
-		"reference": "https://www.smarty.net/docs/en/language.function.debug.tpl"
+		"reference": "language.function.debug.tpl"
 	},
 	"else": {
 		"prefix": ["else", "{else}"],
@@ -75,13 +75,13 @@
 		"prefix": ["extends", "{extends}"],
 		"body": "{extends file=\"${1:file}\"}$0",
 		"description": "{extends} tags are used in child templates in template inheritance for extending parent templates.",
-		"reference": "https://www.smarty.net/docs/en/language.function.extends.tpl"
+		"reference": "language.function.extends.tpl"
 	},
 	"foreach": {
 		"prefix": ["foreach", "{foreach}"],
 		"body": "{foreach from=${1:collection} item=${2:item}${4: key=${3:key}}${6: name=${5:name}}}\n\t$0\n{/foreach}",
 		"description": "{foreach} is used for looping over arrays of data.",
-		"reference": "https://www.smarty.net/docs/en/language.function.foreach.tpl"
+		"reference": "language.function.foreach.tpl"
 	},
 	"/foreach": {
 		"prefix": ["/foreach", "{/foreach}"],
@@ -93,7 +93,7 @@
 		"prefix": ["function", "{function}"],
 		"body": "{function name=\"${1:name}\" ${2:variables}}\n\t$0\n{/function}",
 		"description": "{function} is used to create functions within a template and call them just like a plugin function. Instead of writing a plugin that generates presentational content, keeping it in the template is often a more manageable choice. It also simplifies data traversal, such as deeply nested menus.",
-		"reference": "https://www.smarty.net/docs/en/language.function.function.tpl"
+		"reference": "language.function.function.tpl"
 	},
 	"/function": {
 		"prefix": ["/function", "{/function}"],
@@ -123,13 +123,13 @@
 		"prefix": ["include", "{include}"],
 		"body": "{include file=\"${1:file}\"${3: assign=${2:name}}${6: ${4:var1}=${5:value}}}$0",
 		"description": "{include} tags are used for including other templates in the current template.",
-		"reference": "https://www.smarty.net/docs/en/language.function.include.tpl"
+		"reference": "language.function.include.tpl"
 	},
 	"literal": {
 		"prefix": ["literal", "{literal}"],
 		"body": "{literal}\n\t$0\n{/literal}",
 		"description": "{literal} tags allow a block of data to be taken literally. This is typically used around Javascript or stylesheet blocks where {curly braces} would interfere with the template delimiter syntax.",
-		"reference": "https://www.smarty.net/docs/en/language.function.literal.tpl"
+		"reference": "language.function.literal.tpl"
 	},
 	"/literal": {
 		"prefix": ["/literal", "{/literal}"],
@@ -141,7 +141,7 @@
 		"prefix": ["strip", "{strip}"],
 		"body": "{strip}\n\t$0\n{/strip}",
 		"description": "Anything within {strip}{/strip} tags are stripped of the extra spaces or carriage returns at the beginnings and ends of the lines before they are displayed.",
-		"reference": "https://www.smarty.net/docs/en/language.function.strip.tpl"
+		"reference": "language.function.strip.tpl"
 	},
 	"/strip": {
 		"prefix": ["/strip", "{/strip}"],
