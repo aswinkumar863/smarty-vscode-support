@@ -10,8 +10,9 @@ export class HoverProvider implements HoverProvider {
 		const range = document.getWordRangeAtPosition(position);
 		const word = document.getText(range);
 		const line = document.lineAt(position).text;
+		const regex = new RegExp(`({/?|\|)${word}\\b`);
 
-		if (!new RegExp("{/?" + word + "\\b").test(line) || !snippets[word]) {
+		if (!regex.test(line) || !snippets[word]) {
 			return null;
 		}
 
@@ -22,8 +23,8 @@ export class HoverProvider implements HoverProvider {
 		}
 
 		const md = new MarkdownString();
-		md.appendCodeblock(`{${word}}`);
-		md.appendMarkdown(`${snippet.description}`);
+		// md.appendCodeblock(word);
+		md.appendMarkdown(snippet.description);
 
 		if (snippet.reference) {
 			md.appendMarkdown(`\n\r[Smarty Reference](${CONSTANT.smartyDocsUri}/${snippet.reference})`);
