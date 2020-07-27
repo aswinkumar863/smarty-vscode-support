@@ -28,7 +28,7 @@ export function createLanguageClient(context: ExtensionContext) {
 	// Options to control the language client
 	let clientOptions: LanguageClientOptions = {
 		// Register the server for plain text documents
-		documentSelector: [{ scheme: "file", language: CONSTANT.languageId }],
+		documentSelector: [CONSTANT.languageId],
 		initializationOptions: {
 			dataPaths: [],
 			embeddedLanguages: { css: true, javascript: true }

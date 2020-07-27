@@ -62,21 +62,11 @@ export function activate(context: ExtensionContext): void {
 	});
 
 	// Language document formatting providers
-	languages.registerDocumentFormattingEditProvider(
-		{ scheme: "file", language: CONSTANT.languageId },
-		new FormattingProvider()
-	);
-
-	languages.registerDocumentRangeFormattingEditProvider(
-		{ scheme: "file", language: CONSTANT.languageId },
-		new FormattingProvider()
-	);
+	languages.registerDocumentFormattingEditProvider(CONSTANT.languageId, new FormattingProvider());
+	languages.registerDocumentRangeFormattingEditProvider(CONSTANT.languageId, new FormattingProvider());
 
 	// Language document hover provider
-	languages.registerHoverProvider(
-		{ scheme: "file", language: CONSTANT.languageId },
-		new HoverProvider()
-	);
+	languages.registerHoverProvider(CONSTANT.languageId, new HoverProvider());
 
 	// Command to toggle highlight decoration
 	commands.registerCommand(CONSTANT.toggleHighlightCommand, () => {
