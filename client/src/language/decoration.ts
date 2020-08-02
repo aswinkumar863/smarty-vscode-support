@@ -48,7 +48,7 @@ export class HighlightDecoration {
 	}
 
 	updateDecorations(activeTextEditor: TextEditor): void {
-		if (activeTextEditor?.document?.languageId !== CONSTANT.languageId) {
+		if (!CONFIG.highlight || activeTextEditor?.document?.languageId !== CONSTANT.languageId) {
 			return;
 		}
 		const smartyRegExp = /({{?\*.*?\*}}?)|{{?[^}\n\s]([^{}]|{[^{}]*})*}}?/g;

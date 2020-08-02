@@ -10,9 +10,14 @@ export class HoverProvider implements HoverProvider {
 		const range = document.getWordRangeAtPosition(position);
 		const word = document.getText(range);
 		const line = document.lineAt(position).text;
-		const regex = new RegExp(`({/?|\|)${word}\\b`);
 
-		if (!regex.test(line) || !snippets[word]) {
+		try {
+			const regex = new RegExp(`({/?|\|)${word}\\b`);
+
+			if (!regex.test(line) || !snippets[word]) {
+				return null;
+			}
+		} catch (error) {
 			return null;
 		}
 
