@@ -3,6 +3,7 @@
 [![Latest Release](https://vsmarketplacebadge.apphb.com/version-short/aswinkumar863.smarty-template-support.svg)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support)
 [![Installs](https://vsmarketplacebadge.apphb.com/installs/aswinkumar863.smarty-template-support.svg)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support)
 [![Rating](https://vsmarketplacebadge.apphb.com/rating-short/aswinkumar863.smarty-template-support.svg)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support#review-details)
+[![Trending Weekly](https://vsmarketplacebadge.apphb.com/trending-weekly/aswinkumar863.smarty-template-support.svg)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed/aswinkumar863/smarty-vscode-support?color=blue)
 
 This extension provides [Smarty Template](https://www.smarty.net/) support for Visual Studio Code. 
@@ -41,8 +42,8 @@ Supports `{...}` and `{{...}}` delimiters.
 ```
 "smarty.highhlight": true,
 "smarty.highlightColor": {
-    "dark": "#FFFFFF25",
-    "light": "#FFFA0040"
+  "dark": "#FFFFFF25",
+  "light": "#FFFA0040"
 }
 ```
 
@@ -66,41 +67,41 @@ Paste the following into your `settings.json`
 
 ```
 "editor.tokenColorCustomizations": {
-    "textMateRules": [
-        {
-            "scope": [
-                "punctuation.section.embedded.begin.smarty",
-                "punctuation.section.embedded.end.smarty"
-            ],
-            "settings": {
-                "foreground": "#FFA500",
-                "fontStyle": "bold"
-            }
-        },
-        {
-            "scope": [
-                "keyword.control.smarty",
-                "support.function.built-in.smarty"
-            ],
-            "settings": {
-                "foreground": "#16A016",
-                "fontStyle": "bold"
-            }
-        },
-        {
-            "scope": ["variable.parameter.smarty"],
-            "settings": {
-                "foreground": "#AE23A3",
-                "fontStyle": "bold"
-            }
-        },
-        {
-            "scope": ["source.smarty"],
-            "settings": {
-                "foreground": "#D17C32"
-            }
-        }
-    ]
+  "textMateRules": [
+    {
+      "scope": [
+        "punctuation.section.embedded.begin.smarty",
+        "punctuation.section.embedded.end.smarty"
+      ],
+      "settings": {
+        "foreground": "#FFA500",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": [
+        "keyword.control.smarty",
+        "support.function.built-in.smarty"
+      ],
+      "settings": {
+        "foreground": "#16A016",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": ["variable.parameter.smarty"],
+      "settings": {
+        "foreground": "#AE23A3",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": ["source.smarty"],
+      "settings": {
+        "foreground": "#D17C32"
+      }
+    }
+  ]
 }
 ```
 

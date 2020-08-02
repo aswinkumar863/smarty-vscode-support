@@ -1,3 +1,10 @@
+## 1.7.0 (August 2, 2020)
+* Complete cleanup and refactoring
+* Updated dependencies & language server
+* More HTML formatting options
+* [Variable modifiers](https://www.smarty.net/docs/en/language.modifiers.tpl) snippets
+* Bug Fixes
+
 ## 1.6.0 (May 31, 2020)
 * Rewrite language grammer
 * Comment toggling for `{{...}}` delimiters
