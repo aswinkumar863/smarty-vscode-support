@@ -93,8 +93,8 @@ export class FormattingProvider implements DocumentFormattingEditProvider, Docum
 			indent_inner_html: CONFIG.indentInnerHtml,
 			max_preserve_newlines: CONFIG.maxPreserveNewLines,
 			preserve_newlines: CONFIG.preserveNewLines,
-			wrap_line_length: CONFIG.wrapLineLength,
-			// wrap_attributes: CONFIG.wrapAttributes, // Featue disabled to avoid smarty formatting errors
+			// wrap_line_length: CONFIG.wrapLineLength, // Features disabled temporarily to avoid smarty formatting issues
+			// wrap_attributes: CONFIG.wrapAttributes, 
 			jslint_happy: false,
 			brace_style: "collapse-preserve-inline",
 			html: {
