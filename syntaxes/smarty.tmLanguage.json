@@ -153,7 +153,7 @@
 					},
 					"name": "variable.other.smarty",
 					"patterns": [
-						{ "include": "$strings" },
+						{ "include": "#strings" },
 						{ "include": "#variables" },
 						{ "include": "#lang" },
 						{ "include": "#operators" },
@@ -294,7 +294,7 @@
 						"0": { "name": "keyword.operator.ternary.smarty" }
 					},
 					"patterns": [
-						{ "include": "$strings" },
+						{ "include": "#strings" },
 						{ "include": "#variables" },
 						{ "include": "#lang" },
 						{ "include": "#operators" },
