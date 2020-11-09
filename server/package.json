@@ -28,7 +28,7 @@
     "glob": "^7.1.6",
     "mocha": "^8.2.0",
     "mocha-junit-reporter": "^2.0.0",
-    "mocha-multi-reporters": "^1.1.7"
+    "mocha-multi-reporters": "^1.5.1"
   },
   "scripts": {
     "compile": "npx gulp compile-extension:html-language-features-server",
