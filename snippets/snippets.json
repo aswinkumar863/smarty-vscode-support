@@ -1,294 +1,300 @@
 {
 	"append": {
-		"prefix": ["append", "{append}"],
+		"prefix": "append",
 		"body": "{append var=\"${1:name}\" value=\"${2:value}\" index=\"${3:last}\"}$0",
 		"description": "{append} is used for creating or appending template variable arrays during the execution of a template.",
 		"reference": "language.function.append.tpl"
 	},
 	"assign": {
-		"prefix": ["assign", "{assign}"],
+		"prefix": "assign",
 		"body": "{assign var=\"${1:name}\" value=${2:value}${4: scope=${3:scope}}}$0",
 		"description": "{assign} is used for assigning template variables during the execution of a template.",
 		"reference": "language.function.assign.tpl"
 	},
 	"block": {
-		"prefix": ["block", "{block}"],
+		"prefix": "block",
 		"body": "{block name=${1:name}}\n\t$0\n{/block}",
 		"description": "{block} is used to define a named area of template source for template inheritance.",
 		"reference": "language.function.block.tpl"
 	},
 	"/block": {
-		"prefix": ["/block"],
+		"prefix": "/block",
 		"body": "{/block}$0",
 		"description": "",
 		"reference": ""
 	},
 	"break": {
-		"prefix": ["break", "{break}"],
+		"prefix": "break",
 		"body": "{break}$0",
 		"description": "{break} aborts the iteration of the array.",
 		"reference": "language.function.foreach.tpl#foreach.construct.break"
 	},
 	"capture": {
-		"prefix": ["capture", "{capture}"],
+		"prefix": "capture",
 		"body": "{capture ${2:name=\"${1:name}\" }${4:assign=\"${3:variable}\" }${6:append=\"${5:array_variable}\"}}\n\t$0\n{/capture}",
 		"description": "{capture} is used to collect the output of the template between the tags into a variable instead of displaying it. Any content between {capture name='foo'} and {/capture} is collected into the variable specified in the name attribute.",
 		"reference": "language.function.capture.tpl"
 	},
 	"/capture": {
-		"prefix": ["/capture", "{/capture}"],
+		"prefix": "/capture",
 		"body": "{/capture}$0",
 		"description": "",
 		"reference": ""
 	},
 	"case": {
-		"prefix": ["case", "{case}"],
+		"prefix": "case",
 		"body": "{case ${1:case_name}}\n\t$0\n\t${2:{break}}",
 		"description": "",
 		"reference": ""
 	},
 	"comment": {
-		"prefix": ["comment", "{comment}"],
+		"prefix": "comment",
 		"body": "{* ${1:comment} *}$0",
 		"description": "",
 		"reference": ""
 	},
 	"debug": {
-		"prefix": ["debug", "{debug}"],
+		"prefix": "debug",
 		"body": "{\\$${1:variable}|@debug_print_var}$0",
 		"description": "{debug} dumps the debug console to the page.",
 		"reference": "language.function.debug.tpl"
 	},
 	"else": {
-		"prefix": ["else", "{else}"],
+		"prefix": "else",
 		"body": "{else}\n\t$0",
 		"description": "",
 		"reference": ""
 	},
 	"elseif": {
-		"prefix": ["elseif", "{elseif}"],
+		"prefix": "elseif",
 		"body": "{elseif ${1:condition}}\n\t$0",
 		"description": "",
 		"reference": ""
 	},
 	"extends": {
-		"prefix": ["extends", "{extends}"],
+		"prefix": "extends",
 		"body": "{extends file=\"${1:file}\"}$0",
 		"description": "{extends} tags are used in child templates in template inheritance for extending parent templates.",
 		"reference": "language.function.extends.tpl"
 	},
 	"foreach": {
-		"prefix": ["foreach", "{foreach}"],
+		"prefix": "foreach",
 		"body": "{foreach from=${1:collection} item=${2:item}${4: key=${3:key}}${6: name=${5:name}}}\n\t$0\n{/foreach}",
 		"description": "{foreach} is used for looping over arrays of data.",
 		"reference": "language.function.foreach.tpl"
 	},
+	"foreachelse": {
+		"prefix": "foreachelse",
+		"body": "{foreachelse}$0",
+		"description": "",
+		"reference": ""
+	},
 	"/foreach": {
-		"prefix": ["/foreach", "{/foreach}"],
+		"prefix": "/foreach",
 		"body": "{/foreach}$0",
 		"description": "",
 		"reference": ""
 	},
 	"function": {
-		"prefix": ["function", "{function}"],
+		"prefix": "function",
 		"body": "{function name=\"${1:name}\" ${2:variables}}\n\t$0\n{/function}",
 		"description": "{function} is used to create functions within a template and call them just like a plugin function. Instead of writing a plugin that generates presentational content, keeping it in the template is often a more manageable choice. It also simplifies data traversal, such as deeply nested menus.",
 		"reference": "language.function.function.tpl"
 	},
 	"/function": {
-		"prefix": ["/function", "{/function}"],
+		"prefix": "/function",
 		"body": "{/function}$0",
 		"description": "",
 		"reference": ""
 	},
 	"if": {
-		"prefix": ["if", "{if}"],
+		"prefix": "if",
 		"body": "{if ${1:condition}}\n\t$0\n{/if}",
 		"description": "",
 		"reference": ""
 	},
 	"/if": {
-		"prefix": ["/if", "{/if}"],
+		"prefix": "/if",
 		"body": "{/if}$0",
 		"description": "",
 		"reference": ""
 	},
 	"ifelse": {
-		"prefix": ["ifelse", "{ifelse}"],
+		"prefix": "ifelse",
 		"body": "{if ${1:condition}}\n\t$2\n{else}\n\t$3\n{/if}",
 		"description": "",
 		"reference": ""
 	},
 	"include": {
-		"prefix": ["include", "{include}"],
+		"prefix": "include",
 		"body": "{include file=\"${1:file}\"${3: assign=${2:name}}${6: ${4:var1}=${5:value}}}$0",
 		"description": "{include} tags are used for including other templates in the current template.",
 		"reference": "language.function.include.tpl"
 	},
 	"literal": {
-		"prefix": ["literal", "{literal}"],
+		"prefix": "literal",
 		"body": "{literal}\n\t$0\n{/literal}",
 		"description": "{literal} tags allow a block of data to be taken literally. This is typically used around Javascript or stylesheet blocks where {curly braces} would interfere with the template delimiter syntax.",
 		"reference": "language.function.literal.tpl"
 	},
 	"/literal": {
-		"prefix": ["/literal", "{/literal}"],
+		"prefix": "/literal",
 		"body": "{/literal}$0",
 		"description": "",
 		"reference": ""
 	},
 	"strip": {
-		"prefix": ["strip", "{strip}"],
+		"prefix": "strip",
 		"body": "{strip}\n\t$0\n{/strip}",
 		"description": "Anything within {strip}{/strip} tags are stripped of the extra spaces or carriage returns at the beginnings and ends of the lines before they are displayed.",
 		"reference": "language.function.strip.tpl"
 	},
 	"/strip": {
-		"prefix": ["/strip", "{/strip}"],
+		"prefix": "/strip",
 		"body": "{/strip}$0",
 		"description": "",
 		"reference": ""
 	},
 	"capitalize": {
-		"prefix": ["|capitalize"],
+		"prefix": "|capitalize",
 		"body": "|capitalize",
 		"description": "This is used to capitalize the first letter of all words in a variable. This is similar to the PHP ucwords() function.",
 		"reference": "language.modifiers.tpl#language.modifier.capitalize"
 	},
 	"cat": {
-		"prefix": ["|cat"],
+		"prefix": "|cat",
 		"body": "|cat",
 		"description": "This value is concatenated to the given variable.",
 		"reference": "language.modifier.cat.tpl"
 	},
 	"count_characters": {
-		"prefix": ["|count_characters"],
+		"prefix": "|count_characters",
 		"body": "|count_characters",
 		"description": "This is used to count the number of characters in a variable.",
 		"reference": "language.modifier.count.characters.tpl"
 	},
 	"count_paragraphs": {
-		"prefix": ["|count_paragraphs"],
+		"prefix": "|count_paragraphs",
 		"body": "|count_paragraphs",
 		"description": "This is used to count the number of paragraphs in a variable.",
 		"reference": "language.modifier.count.paragraphs.tpl"
 	},
 	"count_sentences": {
-		"prefix": ["|count_sentences"],
+		"prefix": "|count_sentences",
 		"body": "|count_sentences",
 		"description": "This is used to count the number of sentences in a variable. A sentence being delimited by a dot, question- or exclamation-mark (.?!).",
 		"reference": "language.modifier.count.sentences.tpl"
 	},
 	"count_words": {
-		"prefix": ["|count_words"],
+		"prefix": "|count_words",
 		"body": "|count_words",
 		"description": "This is used to count the number of words in a variable.",
 		"reference": "language.modifier.count.words.tpl"
 	},
 	"date_format": {
-		"prefix": ["|date_format"],
+		"prefix": "|date_format",
 		"body": "|date_format",
 		"description": "This formats a date and time into the given strftime() format.",
 		"reference": "language.modifier.date.format.tpl"
 	},
 	"default": {
-		"prefix": ["|default"],
+		"prefix": "|default",
 		"body": "|default",
 		"description": "This is used to set a default value for a variable. If the variable is unset or an empty string, the given default value is printed instead. Default takes the one argument.",
 		"reference": "language.modifier.default.tpl"
 	},
 	"escape": {
-		"prefix": ["|escape"],
+		"prefix": "|escape",
 		"body": "|escape",
 		"description": "escape is used to encode or escape a variable to html, url, single quotes, hex, hexentity, javascript and mail. By default its html.",
 		"reference": "language.modifier.escape.tpl"
 	},
 	"from_charset": {
-		"prefix": ["|from_charset"],
+		"prefix": "|from_charset",
 		"body": "|from_charset",
 		"description": "from_charset is used to transcode a string from a given charset to the internal charset. This is the exact opposite of the to_charset modifier.",
 		"reference": "language.modifier.from_charset.tpl"
 	},
 	"indent": {
-		"prefix": ["|indent"],
+		"prefix": "|indent",
 		"body": "|indent",
 		"description": "This indents a string on each line, default is 4.",
 		"reference": "language.modifier.indent.tpl"
 	},
 	"lower": {
-		"prefix": ["|lower"],
+		"prefix": "|lower",
 		"body": "|lower",
 		"description": "This is used to lowercase a variable. This is equivalent to the PHP strtolower() function.",
 		"reference": "language.modifier.lower.tpl"
 	},
 	"nl2br": {
-		"prefix": ["|nl2br"],
+		"prefix": "|nl2br",
 		"body": "|nl2br",
 		"description": "All '\\n' line breaks will be converted to html <br /> tags in the given variable. This is equivalent to the PHP's nl2br() function.",
 		"reference": "language.modifier.nl2br.tpl"
 	},
 	"regex_replace": {
-		"prefix": ["|regex_replace"],
+		"prefix": "|regex_replace",
 		"body": "|regex_replace",
 		"description": "A regular expression search and replace on a variable. Use the preg_replace() syntax from the PHP manual.",
 		"reference": "language.modifier.regex.replace.tpl"
 	},
 	"replace": {
-		"prefix": ["|replace"],
+		"prefix": "|replace",
 		"body": "|replace",
 		"description": "A simple search and replace on a variable. This is equivalent to the PHP's str_replace() function.",
 		"reference": "language.modifier.replace.tpl"
 	},
 	"spacify": {
-		"prefix": ["|spacify"],
+		"prefix": "|spacify",
 		"body": "|spacify",
 		"description": "spacify is a way to insert a space between every character of a variable. You can optionally pass a different character or string to insert.",
 		"reference": "language.modifier.spacify.tpl"
 	},
 	"string_format": {
-		"prefix": ["|string_format"],
+		"prefix": "|string_format",
 		"body": "|string_format",
 		"description": "This is a way to format strings, such as decimal numbers and such. Use the syntax for sprintf() for the formatting.",
 		"reference": "language.modifier.string.format.tpl"
 	},
 	"stripmodifier": {
-		"prefix": ["|strip"],
+		"prefix": "|strip",
 		"body": "|strip",
 		"description": "This replaces all spaces, newlines and tabs with a single space, or with the supplied string.",
 		"reference": "language.modifier.strip.tpl"
 	},
 	"strip_tags": {
-		"prefix": ["|strip_tags"],
+		"prefix": "|strip_tags",
 		"body": "|strip_tags",
 		"description": "This strips out markup tags, basically anything between < and >.",
 		"reference": "language.modifier.strip.tags.tpl"
 	},
 	"to_charset": {
-		"prefix": ["|to_charset"],
+		"prefix": "|to_charset",
 		"body": "|to_charset",
 		"description": "to_charset is used to transcode a string from the internal charset to a given charset. This is the exact opposite of the from_charset modifier.",
 		"reference": "language.modifier.to_charset.tpl"
 	},
 	"truncate": {
-		"prefix": ["|truncate"],
+		"prefix": "|truncate",
 		"body": "|truncate",
 		"description": "This truncates a variable to a character length, the default is 80.",
 		"reference": "language.modifier.truncate.tpl"
 	},
 	"unescape": {
-		"prefix": ["|unescape"],
+		"prefix": "|unescape",
 		"body": "|unescape",
 		"description": "unescape is used to decode entity, html and htmlall. It counters the effects of the escape modifier for the given types.",
 		"reference": "language.modifier.unescape.tpl"
 	},
 	"upper": {
-		"prefix": ["|upper"],
+		"prefix": "|upper",
 		"body": "|upper",
 		"description": "This is used to uppercase a variable. This is equivalent to the PHP strtoupper() function.",
 		"reference": "language.modifier.upper.tpl"
 	},
 	"wordwrap": {
-		"prefix": ["|wordwrap"],
+		"prefix": "|wordwrap",
 		"body": "|wordwrap",
 		"description": "Wraps a string to a column width, the default is 80. ",
 		"reference": "language.modifier.wordwrap.tpl"
