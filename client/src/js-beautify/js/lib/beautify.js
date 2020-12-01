@@ -2411,10 +2411,10 @@ function Options(options, merge_child_field) {
 
   this.indent_empty_lines = this._get_boolean('indent_empty_lines');
 
-  // valid templating languages ['django', 'erb', 'handlebars', 'php']
+  // valid templating languages ['django', 'erb', 'handlebars', 'php', 'smarty']
   // For now, 'auto' = all off for javascript, all on for html (and inline javascript).
   // other values ignored
-  this.templating = this._get_selection_list('templating', ['auto', 'none', 'django', 'erb', 'handlebars', 'php'], ['auto']);
+  this.templating = this._get_selection_list('templating', ['auto', 'none', 'django', 'erb', 'handlebars', 'php', 'smarty'], ['auto']);
 }
 
 Options.prototype._get_array = function(name, default_value) {
@@ -2619,7 +2619,7 @@ var dot_pattern = /[^\d\.]/;
 
 var positionable_operators = (
   ">>> === !== " +
-  "<< && >= ** != == <= >> || |> " +
+  "<< && >= ** != == <= >> || ?? |> " +
   "< / - + > : & % ? ^ | *").split(' ');
 
 // IMPORTANT: this must be sorted longest to shortest or tokenizing many not work.
@@ -2627,7 +2627,7 @@ var positionable_operators = (
 var punct =
   ">>>= " +
   "... >>= <<= === >>> !== **= " +
-  "=> ^= :: /= << <= == && -= >= >> != -- += ** || ++ %= &= *= |= |> " +
+  "=> ^= :: /= << <= == && -= >= >> != -- += ** || ?? ++ %= &= *= |= |> " +
   "= ! ? > < : / ^ - + * & % ~ |";
 
 punct = punct.replace(/[-[\]{}()*+?.,\\^$|#]/g, "\\$&");
@@ -3865,7 +3865,8 @@ var template_names = {
   django: false,
   erb: false,
   handlebars: false,
-  php: false
+  php: false,
+  smarty: false
 };
 
 // This lets templates appear anywhere we would do a readUntil
@@ -3891,7 +3892,9 @@ function TemplatablePattern(input_scanner, parent) {
     // django coflicts with handlebars a bit.
     django: pattern.starting_with(/{%/).until_after(/%}/),
     django_value: pattern.starting_with(/{{/).until_after(/}}/),
-    django_comment: pattern.starting_with(/{#/).until_after(/#}/)
+    django_comment: pattern.starting_with(/{#/).until_after(/#}/),
+    smarty: pattern.starting_with(/{(?=[^}\s\n])/).until_after(/}/),
+    smarty_comment: pattern.starting_with(/{\*/).until_after(/\*}/)
   };
 }
 TemplatablePattern.prototype = new Pattern();
@@ -3968,6 +3971,10 @@ TemplatablePattern.prototype.__set_templated_pattern = function() {
     items.push(this.__patterns.django_value._starting_pattern.source);
     items.push(this.__patterns.django_comment._starting_pattern.source);
   }
+  if (!this._disabled.smarty) {
+    items.push(this.__patterns.smarty._starting_pattern.source);
+    items.push(this.__patterns.smarty_comment._starting_pattern.source);
+  }
 
   if (this._until_pattern) {
     items.push(this._until_pattern.source);
@@ -4011,6 +4018,14 @@ TemplatablePattern.prototype._read_template = function() {
           this.__patterns.django_comment.read();
         resulting_string = resulting_string ||
           this.__patterns.django.read();
+      }
+    }
+    if (!this._disabled.smarty) {
+      if (!this._excluded.smarty && !this._excluded.handlebars) {
+        resulting_string = resulting_string ||
+          this.__patterns.smarty_comment.read();
+        resulting_string = resulting_string ||
+          this.__patterns.smarty.read();
       }
     }
   }

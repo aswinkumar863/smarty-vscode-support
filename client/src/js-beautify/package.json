@@ -1,28 +1,28 @@
 {
-  "_from": "js-beautify@^1.11.0",
-  "_id": "js-beautify@1.11.0",
+  "_from": "js-beautify",
+  "_id": "js-beautify@1.13.0",
   "_inBundle": false,
-  "_integrity": "sha512-a26B+Cx7USQGSWnz9YxgJNMmML/QG2nqIaL7VVYPCXbqiKz8PN0waSNvroMtvAK6tY7g/wPdNWGEP+JTNIBr6A==",
+  "_integrity": "sha512-/Tbp1OVzZjbwzwJQFIlYLm9eWQ+3aYbBXLSaqb1mEJzhcQAfrqMMQYtjb6io+U6KpD0ID4F+Id3/xcjH3l/sqA==",
   "_location": "/js-beautify",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "tag",
     "registry": true,
-    "raw": "js-beautify@^1.11.0",
+    "raw": "js-beautify",
     "name": "js-beautify",
     "escapedName": "js-beautify",
-    "rawSpec": "^1.11.0",
+    "rawSpec": "",
     "saveSpec": null,
-    "fetchSpec": "^1.11.0"
+    "fetchSpec": "latest"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/js-beautify/-/js-beautify-1.11.0.tgz",
-  "_shasum": "afb873dc47d58986360093dcb69951e8bcd5ded2",
-  "_spec": "js-beautify@^1.11.0",
-  "_where": "D:\\vscode\\smarty-vscode-support",
+  "_resolved": "https://registry.npmjs.org/js-beautify/-/js-beautify-1.13.0.tgz",
+  "_shasum": "a056d5d3acfd4918549aae3ab039f9f3c51eebb2",
+  "_spec": "js-beautify",
+  "_where": "D:\\vscode\\temp",
   "author": {
     "name": "Einar Lielmanis",
     "email": "einar@beautifier.io"
@@ -78,23 +78,23 @@
     "config-chain": "^1.1.12",
     "editorconfig": "^0.15.3",
     "glob": "^7.1.3",
-    "mkdirp": "~1.0.3",
-    "nopt": "^4.0.3"
+    "mkdirp": "^1.0.4",
+    "nopt": "^5.0.0"
   },
   "deprecated": false,
   "description": "beautifier.io for node",
   "devDependencies": {
     "benchmark": "^2.1.4",
-    "codemirror": "^5.52.0",
-    "jquery": "^3.4.1",
-    "jshint": "^2.11.0",
+    "codemirror": "^5.56.0",
+    "jquery": "^3.5.1",
+    "jshint": "^2.12.0",
     "minimist": ">=1.2.5",
-    "mocha": "^7.1.1",
+    "mocha": "^8.1.1",
     "mustache": "^4.0.1",
-    "node-static": "^0.7.11",
     "requirejs": "^2.3.6",
-    "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.11"
+    "serve": "^11.3.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   },
   "directories": {
     "lib": "js/lib",
@@ -121,5 +121,5 @@
     "url": "git://github.com/beautify-web/js-beautify.git"
   },
   "scripts": {},
-  "version": "1.11.0"
+  "version": "1.13.0"
 }

@@ -15,3 +15,15 @@ export interface Configuration {
 	wrapAttributes?: string,
 	endWithNewline?: boolean
 }
+
+export interface FormattingComments {
+	smarty: string[],
+	html: string[],
+	css: string[]
+}
+
+export interface FormattingTags {
+	start: Set<string>,
+	middle: Set<string>,
+	end: Set<string>
+}
