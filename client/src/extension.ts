@@ -5,6 +5,7 @@ import { createLanguageClient } from "./client";
 import { setConfiguration } from "./configuration";
 
 import { setLanguageConfiguration } from "./language/configuration";
+import { DocumentLinkProvider } from "./language/documentLink";
 import { HighlightDecoration } from "./language/decoration";
 import { FormattingProvider } from "./language/formatter";
 import { HoverProvider } from "./language/hover";
@@ -64,6 +65,9 @@ export function activate(context: ExtensionContext): void {
 	// Language document formatting providers
 	languages.registerDocumentFormattingEditProvider(CONSTANT.languageId, new FormattingProvider());
 	languages.registerDocumentRangeFormattingEditProvider(CONSTANT.languageId, new FormattingProvider());
+
+	// Language document link provider
+	languages.registerDocumentLinkProvider(CONSTANT.languageId, new DocumentLinkProvider());
 
 	// Language document hover provider
 	languages.registerHoverProvider(CONSTANT.languageId, new HoverProvider());

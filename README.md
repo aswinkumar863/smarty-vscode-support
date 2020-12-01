@@ -15,6 +15,7 @@ Supports `{...}` and `{{...}}` delimiters.
 * Snippet completion
 * Code formatting
 * Code folding
+* Code navigation
 * Comment toggling
 * Bracket autoclosing
 * Bracket autosurrounding
