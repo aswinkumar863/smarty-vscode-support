@@ -40,11 +40,50 @@ Supports `{...}` and `{{...}}` delimiters.
 
 **For example:**
 
-```
+```jsonc
 "smarty.highhlight": true,
 "smarty.highlightColor": {
   "dark": "#FFFFFF25",
   "light": "#FFFA0040"
+}
+```
+
+## Formatting Settings
+
+Here is the list of native vscode settings used in smarty document formatting.
+
+```jsonc
+{
+  // The number of spaces a tab is equal to.
+  "editor.tabSize": 4,
+
+  // Indent using spaces.
+  "editor.insertSpaces": true,
+
+  // End with a newline.
+  "html.format.endWithNewline": false,
+
+  // Indent `<head>` and `<body>` sections.
+  "html.format.indentInnerHtml": false,
+
+  // Maximum number of line breaks to be preserved in one chunk. Use `null` for unlimited.
+  "html.format.maxPreserveNewLines": null,
+
+  // Controls whether existing line breaks before elements should be preserved.
+  "html.format.preserveNewLines": true,
+
+  // Wrap attributes.
+  //  - auto: Wrap attributes only when line length is exceeded.
+  //  - force: Wrap each attribute except first.
+  //  - force-aligned: Wrap each attribute except first and keep aligned.
+  //  - force-expand-multiline: Wrap each attribute.
+  //  - aligned-multiple: Wrap when line length is exceeded, align attributes vertically.
+  //  - preserve: Preserve wrapping of attributes.
+  //  - preserve-aligned: Preserve wrapping of attributes but align.
+  "html.format.wrapAttributes": "auto",
+
+  // Maximum amount of characters per line (0 = disable).
+  "html.format.wrapLineLength": 120
 }
 ```
 
@@ -54,7 +93,7 @@ Supports `{...}` and `{{...}}` delimiters.
 
 Paste the following into your `settings.json`
 
-```
+```jsonc
 "emmet.includeLanguages": {
   "smarty": "html"
 }
@@ -66,53 +105,54 @@ Paste the following into your `settings.json`
 
 Paste the following into your `settings.json`
 
-```
-"editor.tokenColorCustomizations": {
-  "textMateRules": [
-    {
-      "scope": [
-        "punctuation.section.embedded.begin.smarty",
-        "punctuation.section.embedded.end.smarty"
-      ],
-      "settings": {
-        "foreground": "#FFA500",
-        "fontStyle": "bold"
+<details>
+  <summary>Click to expand settings!</summary>
+  
+  ```jsonc
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": [
+          "punctuation.section.embedded.begin.smarty",
+          "punctuation.section.embedded.end.smarty"
+        ],
+        "settings": {
+          "foreground": "#FFA500",
+          "fontStyle": "bold"
+        }
+      },
+      {
+        "scope": [
+          "keyword.control.smarty",
+          "support.function.built-in.smarty"
+        ],
+        "settings": {
+          "foreground": "#16A016",
+          "fontStyle": "bold"
+        }
+      },
+      {
+        "scope": ["variable.parameter.smarty"],
+        "settings": {
+          "foreground": "#AE23A3",
+          "fontStyle": "bold"
+        }
+      },
+      {
+        "scope": ["source.smarty"],
+        "settings": {
+          "foreground": "#D17C32"
+        }
       }
-    },
-    {
-      "scope": [
-        "keyword.control.smarty",
-        "support.function.built-in.smarty"
-      ],
-      "settings": {
-        "foreground": "#16A016",
-        "fontStyle": "bold"
-      }
-    },
-    {
-      "scope": ["variable.parameter.smarty"],
-      "settings": {
-        "foreground": "#AE23A3",
-        "fontStyle": "bold"
-      }
-    },
-    {
-      "scope": ["source.smarty"],
-      "settings": {
-        "foreground": "#D17C32"
-      }
-    }
-  ]
-}
-```
+    ]
+  }
+  ```
+</details>
 
-## Known Issues
-
-Due to the formatter is HTML based, code formatting applies only to `HTML/CSS/JS` of document.
+## Issues
 
 Submit the [issues](https://github.com/aswinkumar863/smarty-vscode-support/issues) if you find any bug or have any suggestion.
 
 ## Release Notes
 
 Detailed release notes are available [here](CHANGELOG.md).
-
