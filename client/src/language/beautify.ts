@@ -18,7 +18,6 @@ export class BeautifySmarty {
 	};
 
 	public beautify(docText: String): string {
-		console.time();
 		const embeddedRegExp: RegExp = /(<(?:script|style)[\s\S]*?>)([\s\S]*?)(<\/(?:script|style)>)/g;
 		const smartyRegExp: RegExp = /^(?:\t| )*(.*{{?[^}\n\s]}?.*)$/gm;
 
@@ -44,7 +43,7 @@ export class BeautifySmarty {
 		let endComment = null;
 		let i = 0;
 
-		while (lines[i]) {
+		while (i < lines.length) {
 			let line = lines[i];
 
 			// omit formatting inside comments
@@ -110,10 +109,9 @@ export class BeautifySmarty {
 
 		// unescape smarty literals in script and style
 		if (isEscaped) {
-			formatted = formatted.replace(/\/\*\s+beautify\s+ignore:(start|end)\s+\*\/\n?/g, "");
+			formatted = formatted.replace(/\/\*\s+beautify\s+ignore:(start|end)\s+\*\//g, "");
 		}
 
-		console.timeEnd();
 		return formatted;
 	}
 
