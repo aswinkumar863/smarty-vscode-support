@@ -1,0 +1,55 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: monthly
+    time: "23:30"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: ts-loader
+    versions:
+    - 8.1.0
+  - dependency-name: "@types/node"
+    versions:
+    - 14.14.31
+    - 14.14.33
+  - dependency-name: webpack
+    versions:
+    - 5.24.4
+  - dependency-name: webpack-cli
+    versions:
+    - 4.5.0
+- package-ecosystem: npm
+  directory: "/client"
+  schedule:
+    interval: monthly
+    time: "23:30"
+  open-pull-requests-limit: 10
+  target-branch: master
+  ignore:
+  - dependency-name: "@types/vscode"
+    versions:
+    - 1.55.0
+- package-ecosystem: npm
+  directory: "/server"
+  schedule:
+    interval: monthly
+    time: "23:30"
+  open-pull-requests-limit: 10
+  target-branch: master
+  ignore:
+  - dependency-name: mocha
+    versions:
+    - 8.3.2
+  - dependency-name: vscode-css-languageservice
+    versions:
+    - 5.0.3
+    - 5.1.0
+  - dependency-name: vscode-html-languageservice
+    versions:
+    - 4.0.1
+    - 4.0.2
+  - dependency-name: y18n
+    versions:
+    - 4.0.1
