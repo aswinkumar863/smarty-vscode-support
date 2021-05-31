@@ -12,7 +12,8 @@
 		{ "open": "[", "close": "]" },
 		{ "open": "(", "close": ")" },
 		{ "open": "'", "close": "'", "notIn": ["string", "comment"] },
-		{ "open": "\"", "close": "\"", "notIn": ["string"] }
+		{ "open": "\"", "close": "\"", "notIn": ["string"] },
+		{ "open": "`", "close": "`", "notIn": ["string", "comment"] }
 	],
 	"surroundingPairs": [
 		["{", "}"],
@@ -21,12 +22,6 @@
 		["'", "'"],
 		["\"", "\""]
 	],
-	"folding": {
-		"markers": {
-			"start": "^\\s*{{?(block|capture|for|foreach|function|if|literal|section|setfilter|strip|while)\\b.+}}?",
-			"end": "^\\s*{{?/(block|capture|for|foreach|function|if|literal|section|setfilter|strip|while)\\b}}?"
-		}
-	},
 	"indentationRules": {
 		"increaseIndentPattern": "{{?(block|capture|else|elseif|for|foreach|foreachelse|function|if|literal|section|setfilter|strip|while)\\b.*}}?",
 		"decreaseIndentPattern": "{{?/(block|capture|for|foreach|function|if|literal|section|setfilter|strip|while)\\b}}?"
