@@ -16,10 +16,12 @@ export interface Configuration {
 	endWithNewline?: boolean
 }
 
-export interface FormattingComments {
-	smarty: string[],
-	html: string[],
-	css: string[]
+export interface FormattingLiterals {
+	strings: RegExp,
+	smartyComment: RegExp,
+	htmlComment: RegExp,
+	cssComment: RegExp,
+	scriptTemplate: RegExp
 }
 
 export interface FormattingTags {

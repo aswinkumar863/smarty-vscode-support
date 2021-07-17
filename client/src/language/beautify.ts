@@ -1,14 +1,16 @@
-import { FormattingComments, FormattingTags } from "../interfaces";
+import { FormattingLiterals, FormattingTags } from "../interfaces";
 import { CONFIG } from "../configuration";
 
 const beautify = require("../js-beautify").html;
 
 export class BeautifySmarty {
 
-	private comments: FormattingComments = {
-		smarty: ["{*", "*}"],
-		html: ["<!--", "-->"],
-		css: ["/*", "*/"]
+	private literals: FormattingLiterals = {
+		strings: /"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|`(?:\\.|[^`\\])*`/,
+		smartyComment: /{\*[\s\S]*?\*}/,
+		htmlComment: /<!--[\s\S]*?-->/,
+		cssComment: /\/\*[\s\S]*?\*\//,
+		scriptTemplate: /<script .*?type=['"]text\/template['"].*?>[\s\S]*?<\/script>/
 	};
 
 	private tags: FormattingTags = {
@@ -35,31 +37,28 @@ export class BeautifySmarty {
 		const beautifyOptions = this.getBeautifyOptions();
 		let formatted = beautify(docText, beautifyOptions);
 
-		const lines = formatted.split("\n");
+		// split into lines
+		const literalPattern: string = Object.values(this.literals).map(r => r.source).join('|');
+		const linkPattern: RegExp = new RegExp(`${literalPattern}|(?<end>\r\n)`, 'gm');
+
+		let start: number = -2;
+		let lines: string[] = [];
+		let match: RegExpExecArray;
+		while (match = linkPattern.exec(formatted)) {
+			if (match.groups.end === '\r\n') {
+				lines.push(formatted.substring(start + 2, match.index));
+				start = match.index;
+			}
+		}
+
 		const indent_char = beautifyOptions.indent_with_tabs ? "\t" : " ".repeat(beautifyOptions.indent_size);
 		const region = /{{?(\/?)(\w+).*?}}?/g;
 
 		const startedRegions = [];
-		let endComment = null;
 		let i = 0;
 
 		while (i < lines.length) {
 			let line = lines[i];
-
-			// omit formatting inside comments
-			if (endComment) {
-				if (line.includes(endComment)) endComment = null;
-				i += 1;
-				continue;
-			}
-
-			for (let comment in this.comments) {
-				let [start, end] = this.comments[comment];
-				if (line.includes(start) && !line.includes(end)) {
-					endComment = end;
-					break;
-				}
-			}
 
 			// detect smarty tags
 			let reapeat = startedRegions.length;
