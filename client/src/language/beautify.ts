@@ -38,15 +38,15 @@ export class BeautifySmarty {
 		let formatted = beautify(docText, beautifyOptions);
 
 		// split into lines
-		const literalPattern: string = Object.values(this.literals).map(r => r.source).join('|');
-		const linkPattern: RegExp = new RegExp(`${literalPattern}|(?<end>\r\n)`, 'gm');
+		const literalPattern: string = Object.values(this.literals).map(r => r.source).join("|");
+		const linkPattern: RegExp = new RegExp(`${literalPattern}|(?<end>\r?\n)`, "gm");
 
-		let start: number = -2;
+		let start: number;
 		let lines: string[] = [];
 		let match: RegExpExecArray;
 		while (match = linkPattern.exec(formatted)) {
-			if (match.groups.end === '\r\n') {
-				lines.push(formatted.substring(start + 2, match.index));
+			if (match.groups.end !== undefined) {
+				lines.push(formatted.substring(start + match.groups.end.length || 0, match.index));
 				start = match.index;
 			}
 		}
