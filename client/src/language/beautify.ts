@@ -39,15 +39,18 @@ export class BeautifySmarty {
 
 		// split into lines
 		const literalPattern: string = Object.values(this.literals).map(r => r.source).join("|");
-		const linkPattern: RegExp = new RegExp(`${literalPattern}|(?<end>\r?\n)`, "gm");
+		const linkPattern: RegExp = new RegExp(`${literalPattern}|(?<linebreak>\r?\n)|(?<end>$)`, "gm");
 
 		let start: number;
 		let lines: string[] = [];
 		let match: RegExpExecArray;
 		while (match = linkPattern.exec(formatted)) {
-			if (match.groups.end !== undefined) {
-				lines.push(formatted.substring(start + match.groups.end.length || 0, match.index));
+			if (match.groups.linebreak !== undefined) {
+				lines.push(formatted.substring(start + match.groups.linebreak.length || 0, match.index));
 				start = match.index;
+			} else if (match.groups.end !== undefined) {
+				lines.push(formatted.substring(start, formatted.length).trimLeft());
+				break;
 			}
 		}
 
