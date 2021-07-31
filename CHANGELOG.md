@@ -1,3 +1,9 @@
+## 1.9.0 (July 31, 2021)
+* Formatting issues #267, #242
+* Code folding issue #243
+* Updated dependencies & language server
+* Minor Bug Fixes
+
 ## 1.8.0 (December 13, 2020)
 * Respect `Wrap Attributes` setting. Read [docs](https://github.com/aswinkumar863/smarty-vscode-support#formatting-settings).
 * Code navigation for [`include`](https://www.smarty.net/docsv2/en/language.function.include.tpl) function

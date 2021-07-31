@@ -7,7 +7,7 @@
 		"email": "aswinkumar863@gmail.com"
 	},
 	"license": "MIT",
-	"version": "1.8.0",
+	"version": "1.9.0",
 	"publisher": "aswinkumar863",
 	"icon": "images/logo.png",
 	"galleryBanner": {
@@ -28,7 +28,7 @@
 	"keywords": [
 		"smarty",
 		"smarty 3",
-		"smarty template",
+		"smarty template formatting",
 		"tpl",
 		"php"
 	],
