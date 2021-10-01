@@ -118,7 +118,7 @@
 		"test-compile": "tsc -p ./"
 	},
 	"devDependencies": {
-		"@types/node": "^16.3.3",
+		"@types/node": "^16.10.2",
 		"@types/mocha": "^8.2.2",
 		"merge-options": "^3.0.4",
 		"ts-loader": "^9.2.3",
