@@ -20,6 +20,6 @@
 	},
 	"devDependencies": {
 		"@types/node": "^16.10.2",
-		"@types/vscode": "^1.50.0"
+		"@types/vscode": "^1.61.0"
 	}
 }
