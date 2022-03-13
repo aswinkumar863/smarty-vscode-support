@@ -10,17 +10,17 @@ export class FormattingProvider implements DocumentFormattingEditProvider, Docum
 
 	private SmartyFormatter: BeautifySmarty = new BeautifySmarty();
 
-	provideDocumentRangeFormattingEdits(document: TextDocument, range: Range, _options: FormattingOptions, _token: CancellationToken): ProviderResult<TextEdit[]> {
+	provideDocumentRangeFormattingEdits(document: TextDocument, range: Range, options: FormattingOptions, _token: CancellationToken): ProviderResult<TextEdit[]> {
 		const newrange = new Range(range.start.line, 0, range.end.line, range.end.character);
 		const text = document.getText(newrange);
-		const formatted = this.SmartyFormatter.beautify(text);
+		const formatted = this.SmartyFormatter.beautify(text, options);
 
 		return [TextEdit.replace(newrange, formatted)];
 	}
 
-	provideDocumentFormattingEdits(document: TextDocument, _options: FormattingOptions, _token: CancellationToken): ProviderResult<TextEdit[]> {
+	provideDocumentFormattingEdits(document: TextDocument, options: FormattingOptions, _token: CancellationToken): ProviderResult<TextEdit[]> {
 		const text = document.getText();
-		const formatted = this.SmartyFormatter.beautify(text);
+		const formatted = this.SmartyFormatter.beautify(text, options);
 		const range = fullDocumentRange(document);
 
 		return [TextEdit.replace(range, formatted)];

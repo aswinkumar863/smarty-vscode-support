@@ -1,3 +1,4 @@
+import { FormattingOptions } from 'vscode';
 import { FormattingLiterals, FormattingTags } from "../interfaces";
 import { CONFIG } from "../configuration";
 
@@ -19,7 +20,7 @@ export class BeautifySmarty {
 		end: new Set(["block", "capture", "for", "foreach", "function", "if", "literal", "section", "setfilter", "strip", "while"])
 	};
 
-	public beautify(docText: String): string {
+	public beautify(docText: String, options: FormattingOptions): string {
 		const embeddedRegExp: RegExp = /(<(?:script|style)[\s\S]*?>)([\s\S]*?)(<\/(?:script|style)>)/g;
 		const smartyRegExp: RegExp = /^(?:\t| )*(.*{{?[^}\n\s]}?.*)$/gm;
 
@@ -34,8 +35,8 @@ export class BeautifySmarty {
 		});
 
 		// format using js-beautify
-		const beautifyOptions = this.getBeautifyOptions();
-		let formatted = beautify(docText, beautifyOptions);
+		const beautifyConfig = this.beautifyConfig(options);
+		let formatted = beautify(docText, beautifyConfig);
 
 		// split into lines
 		const literalPattern: string = Object.values(this.literals).map(r => r.source).join("|");
@@ -54,7 +55,7 @@ export class BeautifySmarty {
 			}
 		}
 
-		const indent_char = beautifyOptions.indent_with_tabs ? "\t" : " ".repeat(beautifyOptions.indent_size);
+		const indent_char = beautifyConfig.indent_with_tabs ? "\t" : " ".repeat(beautifyConfig.indent_size);
 		const region = /{{?(\/?)(\w+).*?}}?/g;
 
 		const startedRegions = [];
@@ -117,10 +118,10 @@ export class BeautifySmarty {
 		return formatted;
 	}
 
-	private getBeautifyOptions() {
-		const options = {
-			indent_size: CONFIG.tabSize,
-			indent_with_tabs: !CONFIG.insertSpaces,
+	private beautifyConfig(options: FormattingOptions) {
+		const config = {
+			indent_size: options.tabSize,
+			indent_with_tabs: !options.insertSpaces,
 			indent_handlebars: false,
 			indent_inner_html: CONFIG.indentInnerHtml,
 			max_preserve_newlines: CONFIG.maxPreserveNewLines,
@@ -138,7 +139,7 @@ export class BeautifySmarty {
 			templating: ["smarty"]
 		};
 
-		return options;
+		return config;
 	}
 
 }
