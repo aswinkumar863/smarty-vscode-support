@@ -1,6 +1,6 @@
 import * as path from "path";
 import { ExtensionContext } from "vscode";
-import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } from "vscode-languageclient";
+import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } from "vscode-languageclient/node";
 
 import * as CONSTANT from "./constants";
 

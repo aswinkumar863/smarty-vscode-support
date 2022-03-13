@@ -1,3 +1,8 @@
+## 1.10.0 (March 13, 2022)
+* Respected editorconfig and file indendation (Issues #193, #338)
+* Updated dependencies & html language server
+* Bug Fixes
+
 ## 1.9.0 (July 31, 2021)
 * Formatting issues #267, #242
 * Code folding issue #243
