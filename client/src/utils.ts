@@ -20,7 +20,7 @@ export function promptToShowReleaseNotes(context: ExtensionContext): void {
 	context.globalState.update(CONSTANT.lastSeenVersionKey, currentVersion);
 	
 	window.showInformationMessage(
-		`Smarty extension has been updated to v${currentVersion}. View changelog and star on Github`,
+		`Smarty extension has been updated to v${currentVersion}. Please check the changelog and star on Github`,
 		`Visit Github`,
 	).then(() => {
 		const uri = Uri.parse(packageJson.repository.url);
