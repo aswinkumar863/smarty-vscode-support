@@ -1,6 +1,11 @@
+## 2.0.0 (June 19, 2022)
+* Now available for [vscode.dev](https://vscode.dev/) and other web platforms.
+* Updated dependencies & HTML language server
+* Bug Fixes
+
 ## 1.10.0 (March 13, 2022)
-* Respected editorconfig and file indendation (Issues #193, #338)
-* Updated dependencies & html language server
+* Respected editorconfig and file indentation (Issues #193, #338)
+* Updated dependencies & HTML language server
 * Bug Fixes
 
 ## 1.9.0 (July 31, 2021)
