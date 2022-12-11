@@ -13,7 +13,8 @@ const path = require('path');
 const browserClientConfig = {
 	context: path.join(__dirname, 'client'),
 	mode: 'none',
-	target: 'node', // vscode extensions run in a node context	
+	devtool: 'nosources-source-map',
+	target: 'node', // vscode extensions run in a node context
 	entry: {
 		nodeClientMain: './src/extension.ts',
 	},
@@ -21,6 +22,7 @@ const browserClientConfig = {
 		filename: '[name].js',
 		path: path.join(__dirname, 'client', 'dist', 'node'),
 		libraryTarget: 'commonjs',
+		devtoolModuleFilenameTemplate: '[absolute-resource-path]'
 	},
 	resolve: {
 		extensions: ['.ts', '.js'], // support ts-files and js-files
@@ -47,7 +49,7 @@ const browserClientConfig = {
 const browserServerConfig = {
 	context: path.join(__dirname, 'server'),
 	mode: 'none',
-	target: 'node', // vscode extensions run in a node context	
+	target: 'node', // vscode extensions run in a node context
 	entry: {
 		nodeServerMain: './src/node/htmlServerMain.ts',
 	},
