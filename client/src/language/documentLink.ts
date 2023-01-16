@@ -23,7 +23,7 @@ export class DocumentLinkProvider implements DocumentLinkProvider {
 			const docdir = path.dirname(document.uri.path);
 
 			// Handle relative paths
-			if (fPath.startsWith('./')) {
+			if (fPath.startsWith('./') || fPath.startsWith('../')) {
 				const absPath = path.posix.resolve(docdir, fPath);
 
 				results.push(
