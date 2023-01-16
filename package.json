@@ -126,7 +126,7 @@
 		"package-web:dev": "webpack --mode none --config ./extension.webpack.config.js"
 	},
 	"devDependencies": {
-		"@types/mocha": "^9.1.1",
+		"@types/mocha": "^10.0.1",
 		"@types/node": "^18.0.0",
 		"path-browserify": "^1.0.1",
 		"ts-loader": "^9.3.0",
