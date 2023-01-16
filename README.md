@@ -1,9 +1,9 @@
 # Smarty Template for Visual Studio Code
 
-[![Latest Release](https://vsmarketplacebadge.apphb.com/version-short/aswinkumar863.smarty-template-support.svg)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support)
-[![Installs](https://vsmarketplacebadge.apphb.com/installs/aswinkumar863.smarty-template-support.svg)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support)
-[![Rating](https://vsmarketplacebadge.apphb.com/rating-short/aswinkumar863.smarty-template-support.svg)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support#review-details)
-[![Trending Weekly](https://vsmarketplacebadge.apphb.com/trending-weekly/aswinkumar863.smarty-template-support.svg)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support)
+[![Latest Release](https://vsmarketplacebadges.dev/version-short/aswinkumar863.smarty-template-support.svg)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support)
+[![Installs](https://vsmarketplacebadges.dev/installs-short/aswinkumar863.smarty-template-support.svg)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support)
+[![Rating](https://vsmarketplacebadges.dev/rating-short/aswinkumar863.smarty-template-support.svg)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support#review-details)
+[![Trending Weekly](https://vsmarketplacebadges.dev/trending-weekly/aswinkumar863.smarty-template-support.svg)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support)
 ![GitHub closed issues](https://img.shields.io/github/issues-closed/aswinkumar863/smarty-vscode-support?color=blue)
 
 This extension provides [Smarty Template](https://www.smarty.net/) support for Visual Studio Code. 

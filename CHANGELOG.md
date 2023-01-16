@@ -1,3 +1,8 @@
+## 2.1.0 (January 16, 2023)
+* Handle relative paths and shorthand includes (PR #440)
+* Updated dependencies & HTML language server
+* Fix debugging
+
 ## 2.0.0 (June 19, 2022)
 * Now available for [vscode.dev](https://vscode.dev/) and other web platforms.
 * Updated dependencies & HTML language server
