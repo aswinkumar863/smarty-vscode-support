@@ -1,3 +1,6 @@
+## 2.1.1 (June 22, 2023)
+* Readme Fixes
+
 ## 2.1.0 (January 16, 2023)
 * Handle relative paths and shorthand includes (PR #440)
 * Updated dependencies & HTML language server

@@ -1,10 +1,10 @@
 # Smarty Template for Visual Studio Code
 
-[![Latest Release](https://vsmarketplacebadges.dev/version-short/aswinkumar863.smarty-template-support.svg)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support)
-[![Installs](https://vsmarketplacebadges.dev/installs-short/aswinkumar863.smarty-template-support.svg)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support)
-[![Rating](https://vsmarketplacebadges.dev/rating-short/aswinkumar863.smarty-template-support.svg)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support#review-details)
-[![Trending Weekly](https://vsmarketplacebadges.dev/trending-weekly/aswinkumar863.smarty-template-support.svg)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support)
-![GitHub closed issues](https://img.shields.io/github/issues-closed/aswinkumar863/smarty-vscode-support?color=blue)
+[![Latest Release](https://img.shields.io/visual-studio-marketplace/v/aswinkumar863.smarty-template-support?logo=visual-studio-code&label=Smarty%20Template%20Support)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/aswinkumar863.smarty-template-support)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support)
+[![Rating](https://img.shields.io/visual-studio-marketplace/r/aswinkumar863.smarty-template-support)](https://marketplace.visualstudio.com/items?itemName=aswinkumar863.smarty-template-support&ssr=false#review-details)
+[![GitHub Stars](https://img.shields.io/github/stars/aswinkumar863/smarty-vscode-support?logo=github)](https://github.com/aswinkumar863/smarty-vscode-support)
+[![GitHub closed issues](https://img.shields.io/github/issues-closed/aswinkumar863/smarty-vscode-support)](https://github.com/aswinkumar863/smarty-vscode-support/issues)
 
 This extension provides [Smarty Template](https://www.smarty.net/) support for Visual Studio Code. 
 Supports `{...}` and `{{...}}` delimiters. Available for both VSCode [desktop](https://code.visualstudio.com/Download) and [web](https://vscode.dev/).
